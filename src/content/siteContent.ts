@@ -290,6 +290,21 @@ export const siteContent = {
         src: '/certifications/eic.png',
         alt: 'Export Inspection Council Certification',
       },
+      {
+        name: 'FSSC 22000',
+        src: '/certifications/fssc22000.png',
+        alt: 'FSSC 22000 Food Safety Certification',
+      },
+      {
+        name: 'GMP',
+        src: '/certifications/gmp.png',
+        alt: 'Good Manufacturing Practice Certification',
+      },
+      {
+        name: 'HACCP',
+        src: '/certifications/haccp.png',
+        alt: 'HACCP Certified',
+      },
     ],
   },
   contact: {

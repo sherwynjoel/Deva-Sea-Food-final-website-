@@ -6,6 +6,50 @@ import { Reveal } from '../motion/Reveal'
 import { GlassCard } from '../ui/GlassCard'
 import { Section } from '../ui/Section'
 
+function FacilitySlide({ img }: { img: { src: string; alt: string } }) {
+  const [imageError, setImageError] = useState(false)
+
+  return (
+    <div
+      data-slide
+      className="flex shrink-0 snap-center justify-center px-2"
+      style={{ 
+        width: 'calc(100vw - 4rem)', 
+        maxWidth: '600px',
+        minWidth: '280px'
+      }}
+    >
+      <div className="w-full max-w-full">
+        <div className="relative overflow-hidden rounded-3xl border border-white/15 bg-white/5">
+          <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-black/20 z-10" aria-hidden="true" />
+          {!imageError && (
+            <img
+              src={img.src}
+              alt={img.alt}
+              className="h-[220px] w-full object-cover sm:h-[300px] lg:h-[400px]"
+              loading="lazy"
+              onError={() => setImageError(true)}
+            />
+          )}
+          {imageError && (
+            <div className="grid h-[220px] place-items-center p-4 sm:h-[300px] sm:p-6 lg:h-[400px]">
+              <div className="glass rounded-3xl px-4 py-3 text-center sm:px-5 sm:py-4">
+                <div className="mx-auto inline-flex items-center gap-2 text-xs font-semibold sm:text-sm">
+                  <ImageIcon className="h-4 w-4 text-ocean-200 shrink-0" />
+                  <span>Facility image coming soon</span>
+                </div>
+                <p className="mt-2 max-w-md text-xs text-white/75 sm:text-sm break-words">
+                  Add your facility photos to replace these placeholders.
+                </p>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export function Facility() {
   const items = siteContent.facility.images
   const [active, setActive] = useState(0)
@@ -132,7 +176,7 @@ export function Facility() {
           <Reveal>
             <div
               ref={regionRef}
-              className="glass flex h-full flex-col rounded-3xl border border-white/10 p-4 sm:p-5 overflow-hidden"
+              className="glass flex h-full flex-col rounded-3xl border border-white/10 p-4 sm:p-5 overflow-hidden max-w-full"
               role="region"
               aria-roledescription="carousel"
               aria-label="Facility photos"
@@ -180,45 +224,13 @@ export function Facility() {
               <div
                 ref={scrollerRef}
                 className={cn(
-                  'no-scrollbar flex snap-x snap-mandatory gap-0 overflow-x-auto overflow-y-visible',
+                  'no-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto overflow-y-visible',
                   '-mx-4 px-4 sm:-mx-5 sm:px-5',
                 )}
+                style={{ maxWidth: '100%' }}
               >
-                {items.map((img, idx) => (
-                  <div
-                    key={img.src}
-                    data-slide
-                    className="flex shrink-0 snap-center justify-center"
-                    style={{ width: 'calc(100vw - 2rem)', maxWidth: '980px' }}
-                  >
-                    <div className="w-full">
-                      <div className="relative overflow-hidden rounded-3xl border border-white/15 bg-white/5">
-                        <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-black/20" aria-hidden="true" />
-                        <img
-                          src={img.src}
-                          alt={img.alt}
-                          className="h-[280px] w-full object-cover sm:h-[380px] lg:h-[480px]"
-                          loading="lazy"
-                          onError={(e) => {
-                            // If the image doesn't exist yet, show a friendly placeholder.
-                            const el = e.currentTarget
-                            el.style.display = 'none'
-                          }}
-                        />
-                        <div className="grid h-[280px] place-items-center p-4 sm:h-[380px] sm:p-6 lg:h-[480px]">
-                          <div className="glass rounded-3xl px-4 py-3 text-center sm:px-5 sm:py-4">
-                            <div className="mx-auto inline-flex items-center gap-2 text-xs font-semibold sm:text-sm">
-                              <ImageIcon className="h-4 w-4 text-ocean-200 shrink-0" />
-                              <span>Facility image coming soon</span>
-                            </div>
-                            <p className="mt-2 max-w-md text-xs text-white/75 sm:text-sm break-words">
-                              Add your facility photos to replace these placeholders.
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                {items.map((img) => (
+                  <FacilitySlide key={img.src} img={img} />
                 ))}
               </div>
 

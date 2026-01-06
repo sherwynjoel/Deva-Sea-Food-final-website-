@@ -214,6 +214,44 @@
       animation: none;
     }
   }
+
+  /* Simple CSS scrolling animation for certifications - left to right */
+  .certifications-scroll {
+    display: flex;
+    gap: 2rem;
+    animation: scroll-certifications 50s linear infinite;
+    width: fit-content;
+    will-change: transform;
+    padding: 0 3rem;
+  }
+
+  .certifications-scroll:hover {
+    animation-play-state: paused;
+  }
+
+  .certification-logo {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @keyframes scroll-certifications {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-33.333%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .certifications-scroll {
+      animation: none;
+      overflow-x: auto;
+      padding: 0 1rem;
+    }
+  }
 }
 
 

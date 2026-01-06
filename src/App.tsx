@@ -5,6 +5,7 @@ import { WhatWeOffer } from './components/sections/WhatWeOffer'
 import { Facility } from './components/sections/Facility'
 import { Portfolio } from './components/sections/Portfolio'
 import { ImageCarousel } from './components/sections/ImageCarousel'
+import { Certifications } from './components/sections/Certifications'
 import { Contact } from './components/sections/Contact'
 import { Footer } from './components/sections/Footer'
 import { NavButtons } from './components/sections/NavButtons'
@@ -31,6 +32,8 @@ function App() {
         <Portfolio />
         <WaveDivider />
         <ImageCarousel />
+        <WaveDivider />
+        <Certifications />
         <WaveDivider />
         <Contact />
       </main>
