@@ -2,7 +2,9 @@ import { motion, useReducedMotion, useScroll } from 'framer-motion'
 
 export function ScrollProgress() {
   const reduce = useReducedMotion()
-  const { scrollYProgress } = useScroll()
+  const { scrollYProgress } = useScroll({
+    layoutEffect: false,
+  })
 
   if (reduce) return null
 

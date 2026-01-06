@@ -87,10 +87,11 @@ export function Hero() {
             </div>
 
             <div className="mt-8 flex flex-wrap gap-2">
-              {siteContent.hero.chips.map((c) => (
+              {siteContent.hero.chips.map((c, idx) => (
                 <span
                   key={c}
-                  className="glass inline-flex items-center rounded-full px-3 py-2 text-xs font-semibold text-white/80"
+                  className="glass inline-flex items-center rounded-full px-3 py-2 text-xs font-semibold text-white/80 transition-all duration-300 hover:scale-110 hover:bg-white/15 hover:shadow-md"
+                  style={{ animationDelay: `${idx * 0.1}s` }}
                 >
                   {c}
                 </span>
@@ -105,9 +106,9 @@ export function Hero() {
                 aria-hidden="true"
               />
               <div className="space-y-4">
-                <div className="flex items-start gap-3">
-                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-white/5 ring-1 ring-white/10">
-                    <Snowflake className="h-5 w-5 text-ocean-200" />
+                <div className="flex items-start gap-3 group">
+                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-white/5 ring-1 ring-white/10 transition-all duration-300 group-hover:bg-white/10 group-hover:scale-110 group-hover:shadow-md">
+                    <Snowflake className="h-5 w-5 text-ocean-200 transition-transform duration-300 group-hover:rotate-12" />
                   </span>
                   <div>
                     <p className="text-sm font-semibold">Frozen-ready handling</p>
@@ -116,9 +117,9 @@ export function Hero() {
                     </p>
                   </div>
                 </div>
-                <div className="flex items-start gap-3">
-                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-white/5 ring-1 ring-white/10">
-                    <Globe2 className="h-5 w-5 text-ocean-200" />
+                <div className="flex items-start gap-3 group">
+                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-white/5 ring-1 ring-white/10 transition-all duration-300 group-hover:bg-white/10 group-hover:scale-110 group-hover:shadow-md">
+                    <Globe2 className="h-5 w-5 text-ocean-200 transition-transform duration-300 group-hover:rotate-12" />
                   </span>
                   <div>
                     <p className="text-sm font-semibold">Import & export support</p>
@@ -130,8 +131,12 @@ export function Hero() {
               </div>
 
               <div className="mt-6 grid grid-cols-2 gap-3">
-                {siteContent.stats.map((s) => (
-                  <div key={s.label} className="glass rounded-2xl p-4">
+                {siteContent.stats.map((s, idx) => (
+                  <div 
+                    key={s.label} 
+                    className="glass rounded-2xl p-4 transition-all duration-300 hover:scale-105 hover:bg-white/10 hover:shadow-lg"
+                    style={{ animationDelay: `${idx * 0.1}s` }}
+                  >
                     <p className="text-xl font-semibold tracking-tight">{s.value}</p>
                     <p className="mt-1 text-xs font-semibold text-white/65">{s.label}</p>
                   </div>

@@ -6,7 +6,7 @@ export const siteContent = {
     address: '3/13, Bye pass road, Madathur, Tuticorin District, Tamil Nadu state, India',
   },
   nav: [
-    { id: 'about', label: 'About' },
+    { id: 'about', label: 'About Us' },
     { id: 'vision-mission-goals', label: 'Vision' },
     { id: 'what-we-offer', label: 'Offer' },
     { id: 'facility', label: 'Facility' },
@@ -274,6 +274,23 @@ export const siteContent = {
     title: 'Certifications & Compliance',
     description:
       'We adhere to strict regulatory and certification requirements to ensure product safety, quality, and compliance.',
+    logos: [
+      {
+        name: 'FSSAI',
+        src: '/certifications/fssai.png',
+        alt: 'FSSAI Certification',
+      },
+      {
+        name: 'EU',
+        src: '/certifications/eu.png',
+        alt: 'European Union Compliance',
+      },
+      {
+        name: 'Export Inspection Council',
+        src: '/certifications/eic.png',
+        alt: 'Export Inspection Council Certification',
+      },
+    ],
   },
   contact: {
     title: 'Request a quote',

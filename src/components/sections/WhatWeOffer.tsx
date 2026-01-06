@@ -103,10 +103,10 @@ export function WhatWeOffer() {
 
           <GlassCard className="mt-6 p-6">
             <div className="flex items-start gap-3">
-              <span className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-white/5 ring-1 ring-white/10">
+              <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-white/5 ring-1 ring-white/10">
                 <Waves className="h-5 w-5 text-ocean-200" />
               </span>
-              <div>
+              <div className="min-w-0">
                 <p className="text-sm font-semibold">Designed for trade-ready seafood</p>
                 <p className="mt-2 text-sm text-white/75">
                   Built around export discipline: quality checkpoints, cold-chain handling, and
@@ -117,11 +117,11 @@ export function WhatWeOffer() {
           </GlassCard>
         </Reveal>
 
-        <div className="lg:col-span-8">
+        <div className="lg:col-span-8 min-w-0">
           <Reveal>
             <div
               ref={regionRef}
-              className="glass rounded-3xl border border-white/10 p-4 sm:p-5"
+              className="glass rounded-3xl border border-white/10 p-4 sm:p-5 overflow-hidden"
               role="region"
               aria-roledescription="carousel"
               aria-label="What we offer"
@@ -139,14 +139,14 @@ export function WhatWeOffer() {
                 }, 0)
               }}
             >
-              <div className="flex items-center justify-between gap-3">
-                <p className="text-sm font-semibold text-white/85">
+              <div className="flex items-center justify-between gap-3 mb-4">
+                <p className="text-sm font-semibold text-white/85 whitespace-nowrap">
                   Offer highlights <span className="text-white/55">({active + 1}/{items.length})</span>
                 </p>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 shrink-0">
                   <button
                     type="button"
-                    className="glass-focus glass inline-flex h-10 w-10 items-center justify-center rounded-full"
+                    className="glass-focus glass inline-flex h-10 w-10 items-center justify-center rounded-full shrink-0"
                     onClick={() => scrollToIndex(active - 1)}
                     aria-label="Previous"
                   >
@@ -154,7 +154,7 @@ export function WhatWeOffer() {
                   </button>
                   <button
                     type="button"
-                    className="glass-focus glass inline-flex h-10 w-10 items-center justify-center rounded-full"
+                    className="glass-focus glass inline-flex h-10 w-10 items-center justify-center rounded-full shrink-0"
                     onClick={() => scrollToIndex(active + 1)}
                     aria-label="Next"
                   >
@@ -166,8 +166,8 @@ export function WhatWeOffer() {
               <div
                 ref={scrollerRef}
                 className={cn(
-                  'no-scrollbar mt-4 flex snap-x snap-mandatory gap-0 overflow-x-auto overflow-y-visible py-3',
-                  'scroll-px-3 sm:scroll-px-4',
+                  'no-scrollbar flex snap-x snap-mandatory gap-0 overflow-x-auto overflow-y-visible',
+                  '-mx-4 px-4 sm:-mx-5 sm:px-5',
                 )}
               >
                 {items.map((p, idx) => {
@@ -176,19 +176,20 @@ export function WhatWeOffer() {
                     <div
                       key={p.title}
                       data-slide
-                      className="flex w-full shrink-0 snap-center justify-center px-5 py-3 sm:px-6"
+                      className="flex shrink-0 snap-center justify-center"
+                      style={{ width: 'calc(100vw - 2rem)', maxWidth: '760px' }}
                     >
-                      <GlassCard className="relative flex w-full min-h-[260px] max-w-[760px] flex-col overflow-hidden p-6 sm:p-7">
+                      <GlassCard className="relative flex w-full min-h-[260px] flex-col overflow-hidden p-5 sm:p-7">
                         <div
                           className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-ocean-300/10 blur-3xl"
                           aria-hidden="true"
                         />
                         <div className="relative flex items-start justify-between gap-4">
-                          <div className="min-w-0">
+                          <div className="min-w-0 flex-1">
                             <p className="text-xs font-semibold tracking-[0.22em] text-white/60">
                               {String(idx + 1).padStart(2, '0')}
                             </p>
-                            <p className="mt-2 text-balance text-base font-semibold text-white/90">
+                            <p className="mt-2 text-balance text-base font-semibold text-white/90 break-words">
                               {p.title}
                             </p>
                           </div>
@@ -197,13 +198,13 @@ export function WhatWeOffer() {
                           </span>
                         </div>
 
-                        <p className="relative mt-3 text-sm leading-relaxed text-white/75 sm:text-[15px]">
+                        <p className="relative mt-3 text-sm leading-relaxed text-white/75 sm:text-[15px] break-words">
                           {p.body}
                         </p>
 
                         <div className="relative mt-auto pt-5">
                           <div className="flex items-center gap-2 text-xs font-semibold text-white/65">
-                            <span className="h-1.5 w-1.5 rounded-full bg-ocean-200/80" />
+                            <span className="h-1.5 w-1.5 rounded-full bg-ocean-200/80 shrink-0" />
                             <span>Export-focused execution</span>
                           </div>
                         </div>
@@ -219,7 +220,7 @@ export function WhatWeOffer() {
                     key={i}
                     type="button"
                     className={cn(
-                      'glass-focus h-2.5 w-2.5 rounded-full border',
+                      'glass-focus h-2.5 w-2.5 rounded-full border shrink-0',
                       i === active ? 'border-white/40 bg-ocean-200/70' : 'border-white/20 bg-white/10',
                     )}
                     onClick={() => scrollToIndex(i)}

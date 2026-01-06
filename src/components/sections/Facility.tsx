@@ -128,11 +128,11 @@ export function Facility() {
           </div>
         </Reveal>
 
-        <div className="lg:col-span-8">
+        <div className="lg:col-span-8 min-w-0">
           <Reveal>
             <div
               ref={regionRef}
-              className="glass flex h-full flex-col rounded-3xl border border-white/10 p-4 sm:p-5"
+              className="glass flex h-full flex-col rounded-3xl border border-white/10 p-4 sm:p-5 overflow-hidden"
               role="region"
               aria-roledescription="carousel"
               aria-label="Facility photos"
@@ -150,17 +150,17 @@ export function Facility() {
                 }, 0)
               }}
             >
-              <div className="flex items-center justify-between gap-3">
-                <p className="text-sm font-semibold text-white/85">
+              <div className="flex items-center justify-between gap-3 mb-4">
+                <p className="text-sm font-semibold text-white/85 whitespace-nowrap">
                   Facility photos{' '}
                   <span className="text-white/55">
                     ({active + 1}/{items.length})
                   </span>
                 </p>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 shrink-0">
                   <button
                     type="button"
-                    className="glass-focus glass inline-flex h-10 w-10 items-center justify-center rounded-full"
+                    className="glass-focus glass inline-flex h-10 w-10 items-center justify-center rounded-full shrink-0"
                     onClick={() => scrollToIndex(active - 1)}
                     aria-label="Previous"
                   >
@@ -168,7 +168,7 @@ export function Facility() {
                   </button>
                   <button
                     type="button"
-                    className="glass-focus glass inline-flex h-10 w-10 items-center justify-center rounded-full"
+                    className="glass-focus glass inline-flex h-10 w-10 items-center justify-center rounded-full shrink-0"
                     onClick={() => scrollToIndex(active + 1)}
                     aria-label="Next"
                   >
@@ -180,23 +180,24 @@ export function Facility() {
               <div
                 ref={scrollerRef}
                 className={cn(
-                  'no-scrollbar mt-4 flex snap-x snap-mandatory gap-0 overflow-x-auto overflow-y-visible py-3',
-                  'scroll-px-3 sm:scroll-px-4',
+                  'no-scrollbar flex snap-x snap-mandatory gap-0 overflow-x-auto overflow-y-visible',
+                  '-mx-4 px-4 sm:-mx-5 sm:px-5',
                 )}
               >
                 {items.map((img, idx) => (
                   <div
                     key={img.src}
                     data-slide
-                    className="flex w-full shrink-0 snap-center justify-center px-5 py-3 sm:px-6"
+                    className="flex shrink-0 snap-center justify-center"
+                    style={{ width: 'calc(100vw - 2rem)', maxWidth: '980px' }}
                   >
-                    <div className="w-full max-w-[980px]">
+                    <div className="w-full">
                       <div className="relative overflow-hidden rounded-3xl border border-white/15 bg-white/5">
                         <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-black/20" aria-hidden="true" />
                         <img
                           src={img.src}
                           alt={img.alt}
-                          className="h-[320px] w-full object-cover sm:h-[420px] lg:h-[480px]"
+                          className="h-[280px] w-full object-cover sm:h-[380px] lg:h-[480px]"
                           loading="lazy"
                           onError={(e) => {
                             // If the image doesn't exist yet, show a friendly placeholder.
@@ -204,13 +205,13 @@ export function Facility() {
                             el.style.display = 'none'
                           }}
                         />
-                        <div className="grid h-[320px] place-items-center p-6 sm:h-[420px] lg:h-[480px]">
-                          <div className="glass rounded-3xl px-5 py-4 text-center">
-                            <div className="mx-auto inline-flex items-center gap-2 text-sm font-semibold">
-                              <ImageIcon className="h-4 w-4 text-ocean-200" />
+                        <div className="grid h-[280px] place-items-center p-4 sm:h-[380px] sm:p-6 lg:h-[480px]">
+                          <div className="glass rounded-3xl px-4 py-3 text-center sm:px-5 sm:py-4">
+                            <div className="mx-auto inline-flex items-center gap-2 text-xs font-semibold sm:text-sm">
+                              <ImageIcon className="h-4 w-4 text-ocean-200 shrink-0" />
                               <span>Facility image coming soon</span>
                             </div>
-                            <p className="mt-2 max-w-md text-sm text-white/75">
+                            <p className="mt-2 max-w-md text-xs text-white/75 sm:text-sm break-words">
                               Add your facility photos to replace these placeholders.
                             </p>
                           </div>
@@ -227,7 +228,7 @@ export function Facility() {
                     key={i}
                     type="button"
                     className={cn(
-                      'glass-focus h-2.5 w-2.5 rounded-full border',
+                      'glass-focus h-2.5 w-2.5 rounded-full border shrink-0',
                       i === active ? 'border-white/40 bg-ocean-200/70' : 'border-white/20 bg-white/10',
                     )}
                     onClick={() => scrollToIndex(i)}
