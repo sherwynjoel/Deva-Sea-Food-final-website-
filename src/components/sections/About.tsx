@@ -1,4 +1,4 @@
-import { Image as ImageIcon, Sparkles, Users } from 'lucide-react'
+import { Sparkles } from 'lucide-react'
 import { siteContent } from '../../content/siteContent'
 import { Reveal } from '../motion/Reveal'
 import { GlassCard } from '../ui/GlassCard'
@@ -7,22 +7,22 @@ import { Section } from '../ui/Section'
 export function About() {
   return (
     <Section id="about">
-      <div className="grid gap-10 lg:grid-cols-12 lg:items-stretch">
+      <div className="grid gap-8 sm:gap-10 lg:grid-cols-12 lg:items-stretch">
         <Reveal className="lg:col-span-5">
           <div className="flex h-full flex-col">
             <div>
-              <p className="text-xs font-semibold tracking-[0.22em] text-white/70">ABOUT US</p>
-              <h2 className="heading-font mt-4 text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
+              <p className="text-xs font-semibold tracking-[0.22em] text-white/70 text-center sm:text-left">ABOUT US</p>
+              <h2 className="heading-font mt-3 text-balance text-2xl font-semibold tracking-tight sm:text-3xl lg:text-4xl text-center sm:text-left">
                 {siteContent.about.title}
               </h2>
               {siteContent.about.subtitle ? (
-                <p className="mt-4 text-pretty text-base text-white/75">{siteContent.about.subtitle}</p>
+                <p className="mt-3 text-pretty text-sm sm:text-base text-white/75 text-center sm:text-left">{siteContent.about.subtitle}</p>
               ) : null}
             </div>
 
             <div className="mt-6">
               <div className="glass rounded-2xl p-5 sm:p-6">
-                <div className="space-y-5 text-justify text-sm leading-relaxed text-white/80 hyphens-auto sm:text-base">
+                <div className="space-y-4 sm:space-y-5 text-sm leading-relaxed text-white/80 sm:text-base">
                   {siteContent.about.body.map((para) => (
                     <p key={para} className="text-pretty">
                       {para}
@@ -66,24 +66,13 @@ export function About() {
                   aria-hidden="true"
                 />
 
-                {/* The image placeholder area (swap later with your team photo) */}
+                {/* Team photo */}
                 <div className="relative flex min-h-[320px] flex-1">
-                  <div className="absolute inset-0 grid place-items-center p-6">
-                    <div className="glass rounded-3xl px-5 py-4 text-center">
-                      <div className="mx-auto inline-flex items-center gap-2 text-sm font-semibold">
-                        <Users className="h-4 w-4 text-ocean-200" />
-                        <span>Team Photo Placeholder</span>
-                      </div>
-                      <p className="mt-2 max-w-sm text-sm text-white/75">
-                        Add your <span className="font-semibold">Deva SEA FOOD team thumbs-up</span>{' '}
-                        image here.
-                      </p>
-                      <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-white/15 bg-black/10 px-4 py-2 text-xs font-semibold text-white/70">
-                        <ImageIcon className="h-4 w-4 text-ocean-200" />
-                        <span>Recommended: 1600×1000 (or larger)</span>
-                      </div>
-                    </div>
-                  </div>
+                  <img
+                    src="/team thumbs-up.png"
+                    alt="Deva Sea Food Team"
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
 
                   {/* Bottom wave accent */}
                   <div className="pointer-events-none absolute inset-x-0 bottom-0 opacity-70" aria-hidden="true">

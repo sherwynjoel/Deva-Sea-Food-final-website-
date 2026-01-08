@@ -1,78 +1,39 @@
-import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 import { ArrowRight, Globe2, Snowflake } from 'lucide-react'
 import { siteContent } from '../../content/siteContent'
-import { Reveal } from '../motion/Reveal'
 import { GlassButton } from '../ui/GlassButton'
 import { GlassCard } from '../ui/GlassCard'
 import { Section } from '../ui/Section'
 
 export function Hero() {
-  const reduce = useReducedMotion()
-  const videoCfg = siteContent.hero.backgroundVideo
-  const showVideo = Boolean(videoCfg?.enabled && videoCfg.src && !reduce)
   const heroRef = useRef<HTMLDivElement | null>(null)
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ['start start', 'end start'],
-  })
-  const videoOpacity = useTransform(scrollYProgress, [0, 0.75, 1], [1, 1, 0])
 
   return (
     <Section id="top" className="pt-6 sm:pt-8">
       <div ref={heroRef} className="relative">
-        {showVideo ? (
-          <motion.div
-            className="pointer-events-none fixed inset-0 z-0 overflow-hidden"
-            style={{ opacity: videoOpacity }}
-            aria-hidden="true"
-          >
-            <video
-              className="h-full w-full object-cover opacity-85"
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
-              poster={videoCfg.poster}
-              aria-hidden="true"
-            >
-              <source src={videoCfg.src} type="video/mp4" />
-            </video>
-            <div className="absolute inset-0 bg-black/15" aria-hidden="true" />
-          </motion.div>
-        ) : null}
+        {/* Static background decorations */}
+        <div
+          className="pointer-events-none absolute -left-28 top-6 z-[1] h-72 w-72 rounded-full bg-ocean-300/10 blur-3xl"
+          aria-hidden="true"
+        />
+        <div
+          className="pointer-events-none absolute -right-24 top-24 z-[1] h-80 w-80 rounded-full bg-ocean-600/10 blur-3xl"
+          aria-hidden="true"
+        />
 
-        {!reduce ? (
-          <>
-            <motion.div
-              className="pointer-events-none absolute -left-28 top-6 z-[1] h-72 w-72 rounded-full bg-ocean-300/10 blur-3xl"
-              animate={{ y: [0, -18, 0], x: [0, 10, 0] }}
-              transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
-              aria-hidden="true"
-            />
-            <motion.div
-              className="pointer-events-none absolute -right-24 top-24 z-[1] h-80 w-80 rounded-full bg-ocean-600/10 blur-3xl"
-              animate={{ y: [0, 16, 0], x: [0, -8, 0] }}
-              transition={{ duration: 10.5, repeat: Infinity, ease: 'easeInOut' }}
-              aria-hidden="true"
-            />
-          </>
-        ) : null}
-
-        <div className="relative z-10 grid items-center gap-10 lg:grid-cols-12">
-          <Reveal className="lg:col-span-7">
-            <p className="text-xs font-semibold tracking-[0.22em] text-white/70">
+        <div className="relative z-10 grid items-center gap-8 sm:gap-10 lg:grid-cols-12">
+          <div className="lg:col-span-7">
+            <p className="text-xs font-semibold tracking-[0.22em] text-white/70 text-center sm:text-left">
               {siteContent.brand.tagline}
             </p>
-            <h1 className="mt-4 text-balance text-4xl font-semibold tracking-tight sm:text-6xl">
+            <h1 className="mt-3 text-balance text-3xl font-semibold tracking-tight sm:text-4xl lg:text-6xl text-center sm:text-left">
               {siteContent.hero.headline}
             </h1>
-            <p className="mt-5 max-w-2xl text-pretty text-base text-white/80 sm:text-lg">
+            <p className="mt-4 max-w-2xl text-pretty text-sm sm:text-base text-white/80 lg:text-lg text-center sm:text-left">
               {siteContent.hero.subhead}
             </p>
 
-            <div className="mt-8 flex flex-wrap items-center gap-3">
+            <div className="mt-6 flex flex-wrap items-center justify-center sm:justify-start gap-2 sm:gap-3">
               <a href={siteContent.hero.ctas.primary.href}>
                 <GlassButton>
                   {siteContent.hero.ctas.primary.label}
@@ -86,7 +47,7 @@ export function Hero() {
               </a>
             </div>
 
-            <div className="mt-8 flex flex-wrap gap-2">
+            <div className="mt-6 flex flex-wrap justify-center sm:justify-start gap-1.5 sm:gap-2">
               {siteContent.hero.chips.map((c, idx) => (
                 <span
                   key={c}
@@ -97,10 +58,10 @@ export function Hero() {
                 </span>
               ))}
             </div>
-          </Reveal>
+          </div>
 
-          <Reveal className="lg:col-span-5" delay={0.08}>
-            <GlassCard className="relative overflow-hidden p-6 sm:p-8">
+          <div className="lg:col-span-5">
+            <GlassCard className="relative overflow-hidden p-4 sm:p-6 lg:p-8">
               <div
                 className="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full bg-ocean-300/10 blur-3xl"
                 aria-hidden="true"
@@ -130,20 +91,20 @@ export function Hero() {
                 </div>
               </div>
 
-              <div className="mt-6 grid grid-cols-2 gap-3">
+              <div className="mt-4 sm:mt-6 grid grid-cols-2 gap-2 sm:gap-3">
                 {siteContent.stats.map((s, idx) => (
-                  <div 
-                    key={s.label} 
-                    className="glass rounded-2xl p-4 transition-all duration-300 hover:scale-105 hover:bg-white/10 hover:shadow-lg"
+                  <div
+                    key={s.label}
+                    className="glass rounded-xl sm:rounded-2xl p-3 sm:p-4 transition-all duration-300 hover:scale-105 hover:bg-white/10 hover:shadow-lg"
                     style={{ animationDelay: `${idx * 0.1}s` }}
                   >
-                    <p className="text-xl font-semibold tracking-tight">{s.value}</p>
+                    <p className="text-lg sm:text-xl font-semibold tracking-tight">{s.value}</p>
                     <p className="mt-1 text-xs font-semibold text-white/65">{s.label}</p>
                   </div>
                 ))}
               </div>
             </GlassCard>
-          </Reveal>
+          </div>
         </div>
       </div>
     </Section>

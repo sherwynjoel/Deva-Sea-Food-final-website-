@@ -5,7 +5,6 @@ import { WhatWeOffer } from './components/sections/WhatWeOffer'
 import { Facility } from './components/sections/Facility'
 import { Portfolio } from './components/sections/Portfolio'
 import { ImageCarousel } from './components/sections/ImageCarousel'
-import { Certifications } from './components/sections/Certifications'
 import { Contact } from './components/sections/Contact'
 import { Footer } from './components/sections/Footer'
 import { NavButtons } from './components/sections/NavButtons'
@@ -14,11 +13,11 @@ import { ScrollProgress } from './components/motion/ScrollProgress'
 
 function App() {
   return (
-    <div className="min-h-screen relative">
+    <div className="min-h-screen">
       <ScrollProgress />
       <NavButtons />
       {/* Extra top padding so content clears the floating nav bar */}
-      <main id="main" className="pt-24 pb-24 sm:pt-28 sm:pb-28 relative">
+      <main id="main" className="pt-24 pb-24 sm:pt-28 sm:pb-28">
         <Hero />
         <WaveDivider className="opacity-80" />
         <About />
@@ -32,8 +31,6 @@ function App() {
         <Portfolio />
         <WaveDivider />
         <ImageCarousel />
-        <WaveDivider />
-        <Certifications />
         <WaveDivider />
         <Contact />
       </main>

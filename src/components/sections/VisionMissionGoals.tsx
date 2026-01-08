@@ -10,9 +10,9 @@ export function VisionMissionGoals() {
   return (
     <Section id="vision-mission-goals">
       <Reveal>
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+        <div className="flex flex-col gap-3 text-center sm:text-left sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <h2 className="heading-font text-3xl font-semibold tracking-tight sm:text-4xl">
+            <h2 className="heading-font text-2xl font-semibold tracking-tight sm:text-3xl lg:text-4xl">
               {siteContent.vmg.title}
             </h2>
             <p className="mt-3 max-w-2xl text-white/75">{siteContent.vmg.subtitle}</p>
@@ -20,13 +20,13 @@ export function VisionMissionGoals() {
         </div>
       </Reveal>
 
-      <div className="mt-10 grid items-stretch gap-4 lg:grid-cols-3">
+      <div className="mt-6 sm:mt-10 grid items-stretch gap-3 sm:gap-4 lg:grid-cols-3">
         {siteContent.vmg.cards.map((c, idx) => {
           const Icon = icons[idx % icons.length]
           const isValues = c.title.toLowerCase() === 'values'
           return (
             <Reveal key={c.title} className="h-full" delay={0.04 * idx}>
-              <GlassCard className="flex h-full min-h-[360px] flex-col p-7 sm:min-h-[420px]">
+              <GlassCard className="flex h-full min-h-[280px] flex-col p-5 sm:p-7 sm:min-h-[360px] lg:min-h-[420px]">
                 <div className="flex items-start justify-between gap-4">
                   <div>
                     <p className="text-xs font-semibold tracking-[0.22em] text-white/65">

@@ -30,6 +30,8 @@
   html {
     scroll-behavior: smooth;
     position: relative;
+    overflow-x: hidden;
+    max-width: 100vw;
   }
 
   body {
@@ -37,6 +39,7 @@
     background-color: rgb(var(--page-bg));
     color: rgb(var(--page-fg));
     overflow-x: hidden;
+    max-width: 100vw;
     font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -61,22 +64,23 @@
   }
 
   .no-scrollbar {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
   }
 
   .no-scrollbar::-webkit-scrollbar {
-    display: none; /* Chrome, Safari */
+    display: none;
+    /* Chrome, Safari */
     width: 0;
     height: 0;
   }
 
   .glass {
-    background: linear-gradient(
-      180deg,
-      rgb(var(--glass-surface) / 0.10),
-      rgb(var(--glass-surface) / 0.06)
-    );
+    background: linear-gradient(180deg,
+        rgb(var(--glass-surface) / 0.10),
+        rgb(var(--glass-surface) / 0.06));
     border: 1px solid rgb(var(--glass-border) / 0.18);
     box-shadow: theme('boxShadow.glass');
     backdrop-filter: blur(14px);
@@ -109,6 +113,7 @@
     from {
       opacity: 0;
     }
+
     to {
       opacity: 1;
     }
@@ -119,6 +124,7 @@
       opacity: 0;
       transform: translateY(20px);
     }
+
     to {
       opacity: 1;
       transform: translateY(0);
@@ -126,18 +132,24 @@
   }
 
   @keyframes pulse {
-    0%, 100% {
+
+    0%,
+    100% {
       opacity: 1;
     }
+
     50% {
       opacity: 0.7;
     }
   }
 
   @keyframes float {
-    0%, 100% {
+
+    0%,
+    100% {
       transform: translateY(0px);
     }
+
     50% {
       transform: translateY(-10px);
     }
@@ -160,7 +172,8 @@
   }
 
   /* Smooth transitions for interactive elements */
-  a, button {
+  a,
+  button {
     transition: all 0.2s ease;
   }
 
@@ -195,6 +208,7 @@
     0% {
       transform: translateX(0);
     }
+
     100% {
       transform: translateX(-25%);
     }
@@ -215,7 +229,7 @@
     }
   }
 
-  /* Simple CSS scrolling animation for certifications - left to right */
+  /* Simple CSS scrolling animation for certifications - right to left (original) */
   .certifications-scroll {
     display: flex;
     gap: 2rem;
@@ -226,6 +240,20 @@
   }
 
   .certifications-scroll:hover {
+    animation-play-state: paused;
+  }
+
+  /* Left-to-right scrolling animation for certifications - seamless infinite loop */
+  .certifications-scroll-ltr {
+    display: flex;
+    gap: 0.75rem;
+    animation: scroll-certifications-ltr 15s linear infinite;
+    width: fit-content;
+    will-change: transform;
+    padding: 0 0.25rem;
+  }
+
+  .certifications-scroll-ltr:hover {
     animation-play-state: paused;
   }
 
@@ -240,18 +268,216 @@
     0% {
       transform: translateX(0);
     }
+
     100% {
       transform: translateX(-33.333%);
     }
   }
 
+  @keyframes scroll-certifications-ltr {
+    0% {
+      transform: translateX(-33.333%);
+    }
+
+    100% {
+      transform: translateX(0%);
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
-    .certifications-scroll {
+
+    .certifications-scroll,
+    .certifications-scroll-ltr {
       animation: none;
       overflow-x: auto;
       padding: 0 1rem;
     }
   }
+
+  /* Immersive 3D Circular Carousel */
+  .carousel-3d-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+  }
+
+  .carousel-3d-container {
+    --carousel-radius: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 260px;
+    width: 100%;
+    position: relative;
+  }
+
+  .carousel-3d-scene {
+    perspective: 900px;
+    perspective-origin: center center;
+  }
+
+  .carousel-3d-rotator {
+    position: relative;
+    width: 100px;
+    height: 70px;
+    transform-style: preserve-3d;
+  }
+
+  .carousel-3d-card {
+    position: absolute;
+    width: 90px;
+    height: 65px;
+    left: 50%;
+    top: 50%;
+    margin-left: -45px;
+    margin-top: -32px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 60px rgba(34, 211, 238, 0.1);
+    overflow: hidden;
+    padding: 6px;
+    backface-visibility: visible;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+
+  .carousel-3d-card:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5), 0 0 80px rgba(34, 211, 238, 0.2);
+  }
+
+  /* Reflection effect */
+  .carousel-3d-reflection {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 60px;
+    background: linear-gradient(to bottom, rgba(34, 211, 238, 0.1), transparent);
+    filter: blur(20px);
+    pointer-events: none;
+  }
+
+  /* Glow effects */
+  .carousel-3d-glow-left,
+  .carousel-3d-glow-right {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100px;
+    height: 150px;
+    border-radius: 50%;
+    filter: blur(40px);
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  .carousel-3d-glow-left {
+    left: 10%;
+    background: radial-gradient(circle, rgba(34, 211, 238, 0.3), transparent);
+  }
+
+  .carousel-3d-glow-right {
+    right: 10%;
+    background: radial-gradient(circle, rgba(6, 182, 212, 0.3), transparent);
+  }
+
+  /* Small screens (640px+) */
+  @media (min-width: 640px) {
+    .carousel-3d-container {
+      --carousel-radius: 180px;
+      height: 320px;
+    }
+
+    .carousel-3d-scene {
+      perspective: 1000px;
+    }
+
+    .carousel-3d-rotator {
+      width: 130px;
+      height: 95px;
+    }
+
+    .carousel-3d-card {
+      width: 110px;
+      height: 80px;
+      margin-left: -55px;
+      margin-top: -40px;
+      border-radius: 10px;
+      padding: 8px;
+    }
+
+    .carousel-3d-reflection {
+      width: 280px;
+      height: 80px;
+    }
+  }
+
+  /* Medium screens (768px+) */
+  @media (min-width: 768px) {
+    .carousel-3d-container {
+      --carousel-radius: 220px;
+      height: 380px;
+    }
+
+    .carousel-3d-scene {
+      perspective: 1100px;
+    }
+
+    .carousel-3d-rotator {
+      width: 150px;
+      height: 110px;
+    }
+
+    .carousel-3d-card {
+      width: 130px;
+      height: 95px;
+      margin-left: -65px;
+      margin-top: -47px;
+      border-radius: 12px;
+    }
+
+    .carousel-3d-reflection {
+      width: 350px;
+      height: 100px;
+    }
+
+    .carousel-3d-glow-left,
+    .carousel-3d-glow-right {
+      width: 150px;
+      height: 200px;
+    }
+  }
+
+  /* Large screens (1024px+) */
+  @media (min-width: 1024px) {
+    .carousel-3d-container {
+      --carousel-radius: 280px;
+      height: 450px;
+    }
+
+    .carousel-3d-rotator {
+      width: 170px;
+      height: 125px;
+    }
+
+    .carousel-3d-card {
+      width: 150px;
+      height: 110px;
+      margin-left: -75px;
+      margin-top: -55px;
+    }
+
+    .carousel-3d-reflection {
+      width: 420px;
+      height: 120px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .carousel-3d-rotator {
+      animation: none;
+    }
+  }
 }
-
-

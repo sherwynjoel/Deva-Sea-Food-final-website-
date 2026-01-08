@@ -9,7 +9,7 @@ type Props = {
 
 export function Section({ id, className, children }: Props) {
   return (
-    <section id={id} className={cn('relative py-16 sm:py-20', className)}>
+    <section id={id} className={cn('relative py-16 sm:py-20 overflow-hidden', className)}>
       <Container>{children}</Container>
     </section>
   )

@@ -46,15 +46,15 @@ export function Contact() {
 
   return (
     <Section id="contact">
-      <div className="grid gap-8 lg:grid-cols-12">
+      <div className="grid gap-6 sm:gap-8 lg:grid-cols-12">
         <Reveal className="lg:col-span-5">
-          <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+          <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl lg:text-4xl text-center sm:text-left">
             {siteContent.contact.title}
           </h2>
-          <p className="mt-3 text-white/75">{siteContent.contact.subtitle}</p>
+          <p className="mt-3 text-white/75 text-center sm:text-left">{siteContent.contact.subtitle}</p>
 
-          <div className="mt-6 grid gap-3">
-            <div className="glass rounded-2xl p-4">
+          <div className="mt-4 sm:mt-6 grid gap-2 sm:gap-3">
+            <div className="glass rounded-xl sm:rounded-2xl p-3 sm:p-4">
               <div className="flex items-center gap-2 text-sm font-semibold">
                 <Mail className="h-4 w-4 text-ocean-200" />
                 <span>Email</span>
@@ -72,7 +72,7 @@ export function Contact() {
                 </p>
               </div>
             </div>
-            <div className="glass rounded-2xl p-4">
+            <div className="glass rounded-xl sm:rounded-2xl p-3 sm:p-4">
               <div className="flex items-center gap-2 text-sm font-semibold">
                 <PhoneCall className="h-4 w-4 text-ocean-200" />
                 <span>Phone</span>
@@ -83,7 +83,7 @@ export function Contact() {
                 </a>
               </p>
             </div>
-            <div className="glass rounded-2xl p-4">
+            <div className="glass rounded-xl sm:rounded-2xl p-3 sm:p-4">
               <div className="flex items-center gap-2 text-sm font-semibold">
                 <MessageCircle className="h-4 w-4 text-ocean-200" />
                 <span>WhatsApp</span>
@@ -98,7 +98,7 @@ export function Contact() {
         </Reveal>
 
         <Reveal className="lg:col-span-7" delay={0.08}>
-          <GlassCard className="p-6 sm:p-8">
+          <GlassCard className="p-4 sm:p-6 lg:p-8">
             <form
               onSubmit={(e) => {
                 e.preventDefault()

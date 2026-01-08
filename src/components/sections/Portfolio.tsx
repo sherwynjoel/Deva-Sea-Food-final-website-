@@ -80,10 +80,10 @@ export function Portfolio() {
   return (
     <Section id="portfolio">
       <Reveal>
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+        <div className="flex flex-col gap-3 text-center sm:text-left sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="text-xs font-semibold tracking-[0.22em] text-white/70">OUR PORTFOLIO</p>
-            <h2 className="heading-font mt-4 text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
+            <h2 className="heading-font mt-3 text-balance text-2xl font-semibold tracking-tight sm:text-3xl lg:text-4xl">
               {siteContent.portfolio.title}
             </h2>
             <p className="mt-3 max-w-3xl text-sm text-white/75 sm:text-base">
@@ -93,7 +93,7 @@ export function Portfolio() {
         </div>
       </Reveal>
 
-      <div className="mt-10 grid gap-6 lg:grid-cols-12 lg:items-start">
+      <div className="mt-6 sm:mt-10 grid gap-4 sm:gap-6 lg:grid-cols-12 lg:items-start">
         <Reveal className="lg:col-span-6">
           <GlassCard className="p-4 sm:p-5">
             <div className="grid gap-2">
@@ -135,7 +135,7 @@ export function Portfolio() {
 
             <div className="mt-6 grid gap-4 sm:grid-cols-2">
               {subCards.map((chunk, i) => (
-                <div key={i} className="glass rounded-2xl p-5">
+                <div key={i} className="glass rounded-xl sm:rounded-2xl p-3 sm:p-5">
                   <p className="text-sm font-semibold text-white/85">{active?.name}</p>
                   <ul className="mt-3 space-y-2 text-sm text-white/75">
                     {chunk.map((s) => (

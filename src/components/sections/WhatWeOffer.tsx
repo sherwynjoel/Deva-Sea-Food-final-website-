@@ -37,11 +37,11 @@ export function WhatWeOffer() {
     const add = (mq as any).addEventListener ? 'addEventListener' : 'addListener'
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const remove = (mq as any).removeEventListener ? 'removeEventListener' : 'removeListener'
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    ;(mq as any)[add]('change', sync)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ; (mq as any)[add]('change', sync)
     return () => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ;(mq as any)[remove]('change', sync)
+      ; (mq as any)[remove]('change', sync)
     }
   }, [])
 
@@ -166,7 +166,7 @@ export function WhatWeOffer() {
               <div
                 ref={scrollerRef}
                 className={cn(
-                  'no-scrollbar flex snap-x snap-mandatory gap-0 overflow-x-auto overflow-y-visible',
+                  'no-scrollbar flex snap-x snap-mandatory gap-0 overflow-x-auto',
                   '-mx-4 px-4 sm:-mx-5 sm:px-5',
                 )}
               >
