@@ -14,9 +14,10 @@ export const siteContent = {
     { id: 'contact', label: 'Get a Quote' },
   ],
   hero: {
-    headline: 'Where the Sea Meets Expertise',
+    headline: 'Deva Sea Food is a trusted name in seafood exports, delivering quality products to international markets with uncompromised safety and reliability.',
     subhead:
-      'Premium Seafood, Sustainably Sourced, Meticulously Processed, and Exported Worldwide.',
+      'Exporting Crab, Fish, Octopus and a Wide Range of Frozen Seafood Worldwide',
+    motto: 'TRUST – QUALITY – DELIVERANCE',
     backgroundVideo: {
       /** Put your file at `public/hero-ocean.mp4` (or change this path). */
       src: '/hero-ocean.mp4',
@@ -34,6 +35,12 @@ export const siteContent = {
       'HACCP & EU - Compliant Operations',
       '24/7 - Cold Chain Monitoring',
     ],
+    images: [
+      { src: '/hero1.png', alt: 'Hero image 1' },
+      { src: '/hero 2.png', alt: 'Hero image 2' },
+      { src: '/hero3.png', alt: 'Hero image 3' },
+      { src: '/hero4.png', alt: 'Hero image 4' },
+    ],
   },
   stats: [
     { label: 'Cold-chain handling', value: '24/7' },
@@ -44,7 +51,7 @@ export const siteContent = {
   portfolio: {
     title: 'Our Seafood Portfolio',
     subtitle:
-      'Click a product to view available sub-products (cuts/pack options). We also support custom buyer specifications.',
+      'We supply a wide range of premium seafood, responsibly sourced, expertly processed, and exported to meet international standards. Our offerings are flexible and tailored to meet diverse client requirements worldwide.',
     products: [
       {
         name: 'Pasteurized Crab meat',

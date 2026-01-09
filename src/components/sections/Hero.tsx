@@ -5,13 +5,12 @@ import { siteContent } from '../../content/siteContent'
 import { GlassButton } from '../ui/GlassButton'
 
 import { Container } from '../ui/Container'
-import heroVideo from '../../assets/hero-ocean.mp4'
 
 export function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0)
 
   // Carousel of images to display
-  const slides = siteContent.facility.images || []
+  const slides = siteContent.hero.images || []
 
   useEffect(() => {
     // if (slides.length === 0) return // Removed constant condition check
@@ -24,17 +23,8 @@ export function Hero() {
 
   return (
     <section id="top" className="relative overflow-hidden pt-32 pb-16 sm:pt-40 sm:pb-20">
-      {/* Background Video */}
-      <div className="absolute inset-0 z-0">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="h-full w-full object-cover"
-        >
-          <source src={heroVideo} type="video/mp4" />
-        </video>
+      {/* Background overlay */}
+      <div className="absolute inset-0 z-0 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800">
         {/* Bottom fade to blend with next section */}
         <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-b from-transparent to-[rgb(var(--page-bg))]" />
       </div>
@@ -46,14 +36,14 @@ export function Hero() {
               Removing them is cleaner for video background. */}
 
           <div className="grid items-center gap-8 sm:gap-10 lg:grid-cols-12">
-            <div className="lg:col-span-7">
-              <p className="text-xs font-semibold tracking-[0.22em] text-white/70 text-center sm:text-left">
-                {siteContent.brand.tagline}
+            <div className="lg:col-span-7" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.7), 0 4px 16px rgba(0,0,0,0.5)' }}>
+              <p className="text-sm sm:text-base font-bold tracking-[0.15em] text-white text-center sm:text-left uppercase">
+                {siteContent.hero.motto}
               </p>
-              <h1 className="mt-3 text-balance text-3xl font-semibold tracking-tight sm:text-4xl lg:text-6xl text-center sm:text-left">
+              <h1 className="mt-4 text-balance text-xl font-semibold tracking-tight sm:text-2xl lg:text-3xl text-center sm:text-left text-white leading-relaxed">
                 {siteContent.hero.headline}
               </h1>
-              <p className="mt-4 max-w-2xl text-pretty text-sm sm:text-base text-white/80 lg:text-lg text-center sm:text-left">
+              <p className="mt-4 max-w-2xl text-pretty text-base sm:text-lg text-white lg:text-xl text-center sm:text-left font-medium">
                 {siteContent.hero.subhead}
               </p>
 
@@ -118,6 +108,16 @@ export function Hero() {
                   ))}
                 </div>
               </div>
+            </div>
+
+            {/* Tagline below slideshow */}
+            <div className="lg:col-span-12 mt-8 sm:mt-10 lg:mt-12">
+              <p
+                className="text-center text-lg sm:text-xl lg:text-2xl font-medium text-white/90 italic tracking-wide"
+                style={{ textShadow: '0 2px 8px rgba(0,0,0,0.5)' }}
+              >
+                "Where the Sea Meets Expertise – Premium Seafood, Sustainably Sourced, Meticulously Processed, and Exported Worldwide."
+              </p>
             </div>
           </div>
         </div>

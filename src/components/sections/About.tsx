@@ -36,7 +36,7 @@ export function About() {
 
         <div className="lg:col-span-7">
           <Reveal className="h-full" delay={0.08}>
-            <GlassCard className="relative h-full overflow-hidden p-4 sm:p-6">
+            <GlassCard className="relative h-full overflow-hidden p-3 sm:p-4">
               {/* Decorative ocean glow */}
               <div
                 className="pointer-events-none absolute -right-28 -top-28 h-72 w-72 rounded-full bg-ocean-300/12 blur-3xl"
@@ -47,64 +47,32 @@ export function About() {
                 aria-hidden="true"
               />
 
-              {/* Creative placeholder frame */}
-              <div className="relative flex h-full flex-col overflow-hidden rounded-3xl border border-white/15 bg-white/5">
-                <div
-                  className="pointer-events-none absolute inset-0 opacity-70"
-                  style={{
-                    background:
-                      'radial-gradient(900px 420px at 20% 10%, rgba(34,211,238,0.20), transparent 55%), radial-gradient(700px 380px at 85% 25%, rgba(165,243,252,0.16), transparent 60%), radial-gradient(800px 520px at 55% 95%, rgba(8,145,178,0.18), transparent 58%)',
-                  }}
-                  aria-hidden="true"
-                />
-                <div
-                  className="pointer-events-none absolute inset-0 opacity-60"
-                  style={{
-                    background:
-                      'repeating-linear-gradient(135deg, rgba(255,255,255,0.06) 0px, rgba(255,255,255,0.06) 1px, transparent 1px, transparent 14px)',
-                  }}
-                  aria-hidden="true"
-                />
-
-                {/* Team photo */}
-                <div className="relative flex min-h-[320px] flex-1">
+              {/* Image container with proper sizing */}
+              <div className="relative overflow-hidden rounded-2xl border-2 border-white/20 shadow-2xl">
+                {/* Team photo - full width with proper aspect ratio */}
+                <div className="relative aspect-[16/10] sm:aspect-[16/9] w-full">
                   <img
                     src="/team thumbs-up.png"
                     alt="Deva Sea Food Team"
-                    className="absolute inset-0 w-full h-full object-cover"
+                    className="absolute inset-0 w-full h-full object-cover object-center"
                   />
 
-                  {/* Bottom wave accent */}
-                  <div className="pointer-events-none absolute inset-x-0 bottom-0 opacity-70" aria-hidden="true">
-                    <svg viewBox="0 0 1440 140" preserveAspectRatio="none" className="h-20 w-full">
-                      <path
-                        d="M0,80 C240,30 420,130 720,80 C1020,30 1200,120 1440,80 L1440,140 L0,140 Z"
-                        fill="rgba(255,255,255,0.07)"
-                      />
-                      <path
-                        d="M0,98 C260,60 460,140 720,98 C980,56 1210,130 1440,98 L1440,140 L0,140 Z"
-                        fill="rgba(255,255,255,0.05)"
-                      />
-                    </svg>
-                  </div>
+                  {/* Subtle gradient overlay at bottom */}
+                  <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/50 to-transparent pointer-events-none" />
                 </div>
 
-                {/* Context chips */}
-                <div className="relative mt-auto flex flex-wrap items-center justify-between gap-2 border-t border-white/10 p-4">
-                  <div className="flex flex-wrap gap-2">
+                {/* Context chips - positioned at bottom of image */}
+                <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4">
+                  <div className="flex flex-wrap gap-2 justify-center">
                     {['People-first', 'Export mindset', 'Cold-chain focus'].map((t) => (
                       <span
                         key={t}
-                        className="inline-flex items-center rounded-full border border-white/15 bg-black/10 px-3 py-2 text-xs font-semibold text-white/75"
+                        className="inline-flex items-center rounded-full border border-white/30 bg-black/40 backdrop-blur-sm px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-semibold text-white shadow-lg"
                       >
                         {t}
                       </span>
                     ))}
                   </div>
-                  <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-black/10 px-3 py-2 text-xs font-semibold text-white/75">
-                    <Sparkles className="h-4 w-4 text-ocean-200" />
-                    Replace with your photo
-                  </span>
                 </div>
               </div>
             </GlassCard>

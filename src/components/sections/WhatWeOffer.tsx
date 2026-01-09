@@ -8,6 +8,15 @@ import { Section } from '../ui/Section'
 
 const iconByIndex = [Tag, BadgeCheck, Snowflake, Route, Globe2]
 
+// Background images for each offer slide
+const slideBackgrounds = [
+  '/Premium Seafood Expertise.png',
+  '/Uncompromising Quality & Safety.png',
+  '/End-to-End Cold Chain Management.png',
+  '/Consistency & Traceability.png',
+  '/Reliable Global Partner.png',
+]
+
 export function WhatWeOffer() {
   const items = siteContent.offer.points
   const [active, setActive] = useState(0)
@@ -77,18 +86,17 @@ export function WhatWeOffer() {
     }
   }, [])
 
+  // Auto-slide every 4 seconds
   useEffect(() => {
-    if (reduceMotion) return
-    if (paused) return
     if (!items.length) return
 
-    const AUTOPLAY_MS = 3000
+    const AUTOPLAY_MS = 4000
     const id = window.setInterval(() => {
       scrollToIndex((active + 1) % items.length)
     }, AUTOPLAY_MS)
 
     return () => window.clearInterval(id)
-  }, [active, items.length, paused, reduceMotion])
+  }, [active, items.length])
 
   return (
     <Section id="what-we-offer">
@@ -172,6 +180,7 @@ export function WhatWeOffer() {
               >
                 {items.map((p, idx) => {
                   const Icon = icons[idx]
+                  const bgImage = slideBackgrounds[idx % slideBackgrounds.length]
                   return (
                     <div
                       key={p.title}
@@ -179,36 +188,59 @@ export function WhatWeOffer() {
                       className="flex shrink-0 snap-center justify-center"
                       style={{ width: 'calc(100vw - 2rem)', maxWidth: '760px' }}
                     >
-                      <GlassCard className="relative flex w-full min-h-[260px] flex-col overflow-hidden p-5 sm:p-7">
-                        <div
-                          className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-ocean-300/10 blur-3xl"
-                          aria-hidden="true"
-                        />
-                        <div className="relative flex items-start justify-between gap-4">
-                          <div className="min-w-0 flex-1">
-                            <p className="text-xs font-semibold tracking-[0.22em] text-white/60">
-                              {String(idx + 1).padStart(2, '0')}
-                            </p>
-                            <p className="mt-2 text-balance text-base font-semibold text-white/90 break-words">
+                      <div className="relative flex w-full min-h-[320px] sm:min-h-[360px] flex-col overflow-hidden rounded-2xl border border-white/15">
+                        {/* Background image */}
+                        <div className="absolute inset-0">
+                          <img
+                            src={bgImage}
+                            alt=""
+                            className="h-full w-full object-cover"
+                          />
+                          {/* Dark overlay for text readability */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/30" />
+                        </div>
+
+                        {/* Content */}
+                        <div className="relative z-10 flex flex-1 flex-col p-5 sm:p-7">
+                          {/* Top row: number and icon */}
+                          <div className="flex items-start justify-between gap-4">
+                            <div className="min-w-0 flex-1">
+                              <p
+                                className="text-4xl sm:text-5xl font-bold text-white/20"
+                                style={{ textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}
+                              >
+                                {String(idx + 1).padStart(2, '0')}
+                              </p>
+                            </div>
+                            <span className="inline-flex h-12 w-12 sm:h-14 sm:w-14 shrink-0 items-center justify-center rounded-full bg-white/10 backdrop-blur-sm ring-2 ring-white/20">
+                              <Icon className="h-6 w-6 sm:h-7 sm:w-7 text-ocean-200" />
+                            </span>
+                          </div>
+
+                          {/* Title and body */}
+                          <div className="mt-auto">
+                            <h3
+                              className="text-xl sm:text-2xl font-bold text-white break-words"
+                              style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}
+                            >
                               {p.title}
+                            </h3>
+                            <p
+                              className="mt-3 text-sm sm:text-base leading-relaxed text-white/90 break-words"
+                              style={{ textShadow: '0 1px 3px rgba(0,0,0,0.5)' }}
+                            >
+                              {p.body}
                             </p>
-                          </div>
-                          <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-white/5 ring-1 ring-white/10">
-                            <Icon className="h-5 w-5 text-ocean-200" />
-                          </span>
-                        </div>
 
-                        <p className="relative mt-3 text-sm leading-relaxed text-white/75 sm:text-[15px] break-words">
-                          {p.body}
-                        </p>
-
-                        <div className="relative mt-auto pt-5">
-                          <div className="flex items-center gap-2 text-xs font-semibold text-white/65">
-                            <span className="h-1.5 w-1.5 rounded-full bg-ocean-200/80 shrink-0" />
-                            <span>Export-focused execution</span>
+                            <div className="mt-4 pt-4 border-t border-white/20">
+                              <div className="flex items-center gap-2 text-sm font-semibold text-ocean-200">
+                                <span className="h-2 w-2 rounded-full bg-ocean-200 shrink-0" />
+                                <span>Export-focused execution</span>
+                              </div>
+                            </div>
                           </div>
                         </div>
-                      </GlassCard>
+                      </div>
                     </div>
                   )
                 })}
