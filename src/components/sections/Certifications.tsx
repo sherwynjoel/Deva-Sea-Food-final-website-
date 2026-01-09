@@ -1,6 +1,7 @@
 import { motion, useAnimation } from 'framer-motion'
 import { ShieldCheck } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { useState, useEffect } from 'react'
+
 import { siteContent } from '../../content/siteContent'
 import { Reveal } from '../motion/Reveal'
 import { Section } from '../ui/Section'
@@ -17,142 +18,98 @@ const certificationImages = [
 ]
 
 export function Certifications() {
-  const [isPaused, setIsPaused] = useState(false)
-  const controls = useAnimation()
-
-  const radius = 260 // Radius of the 3D circle
-  const totalItems = certificationImages.length
-  const anglePerItem = 360 / totalItems
+  const [isPaused, setIsPaused] = useState(false);
+  const controls = useAnimation();
 
   // Continuous rotation animation
   useEffect(() => {
     controls.start({
-      rotateY: [0, -360],
+      rotateY: 360,
       transition: {
         duration: 20,
         ease: 'linear',
         repeat: Infinity,
       },
-    })
-  }, [controls])
+    });
+  }, [controls]);
 
   // Pause/Resume on hover
   useEffect(() => {
     if (isPaused) {
-      controls.stop()
+      controls.stop();
     } else {
       controls.start({
-        rotateY: [0, -360],
+        rotateY: 360,
         transition: {
           duration: 20,
           ease: 'linear',
           repeat: Infinity,
-          // Maintain current rotation would be complex with simple controls.start loop restart
-          // ideally we use a motion value, but for simplicity in this constrained env:
-          // We will let it restart or just accept the jump on hover out for now
-          // or ideally use a recursive animation.
-          // Let's stick to a simple continuous loop that doesn't pause for now to avoid jumpiness,
-          // or just slow it down on hover.
         },
-      })
+      });
     }
-  }, [isPaused, controls])
-
-  // NOTE: True pause-resume without jump requires `useMotionValue` and `useAnimationFrame`.
-  // To keep it robust without complex hooks in this step, let's just slow it down significantly on hover instead of full stop.
+  }, [isPaused, controls]);
 
   return (
     <Section id="certifications" className="overflow-hidden">
-      <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20 min-h-[600px]">
-
-        {/* Left Content */}
-        <div className="flex-1 max-w-lg text-center lg:text-left z-20">
+      <div className="flex flex-col gap-12 min-h-[400px]">
+        {/* Header Content */}
+        <div className="max-w-2xl mx-auto text-center z-20 px-4">
           <Reveal>
-            <div className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-white/10 ring-2 ring-white/20 mb-6 backdrop-blur-sm">
-              <ShieldCheck className="h-8 w-8 text-ocean-200" />
+            <div className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-white/10 ring-2 ring-white/20 mb-6 backdrop-blur-sm">
+              <ShieldCheck className="h-7 w-7 text-ocean-200" />
             </div>
-            <h2 className="heading-font text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl text-white">
+            <h2 className="heading-font text-3xl font-semibold tracking-tight sm:text-4xl text-white">
               {siteContent.certifications.title}
             </h2>
-            <p className="mt-6 text-base sm:text-lg text-white/70 leading-relaxed">
+            <p className="mt-4 text-base text-white/70 leading-relaxed max-w-xl mx-auto">
               {siteContent.certifications.description}
             </p>
-
-            <div className="mt-8 flex flex-wrap justify-center lg:justify-start gap-3">
-              {['Global Standards', 'Rigorous Testing', 'Safety First'].map((tag) => (
-                <span key={tag} className="px-4 py-2 rounded-full border border-white/10 bg-white/5 text-sm font-medium text-white/80">
-                  {tag}
-                </span>
-              ))}
-            </div>
           </Reveal>
         </div>
 
-        {/* Right 3D Carousel */}
+        {/* 3D Circular Carousel */}
         <div
-          className="flex-1 relative h-[500px] w-full flex items-center justify-center perspective-[1000px]"
+          className="flex-1 relative h-[500px] w-full flex items-center justify-center"
+          style={{ perspective: '1200px' }}
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
           {/* Background Glow */}
           <div className="absolute inset-0 bg-ocean-500/10 blur-[100px] rounded-full mix-blend-screen pointer-events-none" />
 
-          {/* 3D Rotator */}
+          {/* Carousel Ring */}
           <motion.div
-            className="relative w-[300px] h-[300px] preserve-3d"
-            animate={{ rotateY: 360 }}
-            transition={{
-              duration: 30,
-              ease: "linear",
-              repeat: Infinity
-            }}
+            className="relative w-[300px] h-[300px]"
+            animate={controls}
             style={{ transformStyle: 'preserve-3d' }}
           >
-            {certificationImages.map((cert, index) => {
-              const angle = index * anglePerItem
 
+            {certificationImages.map((cert, index) => {
+              const angle = index * (360 / certificationImages.length);
               return (
                 <div
                   key={cert.name}
-                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+                  className="absolute left-1/2 top-1/2"
                   style={{
-                    transform: `rotateY(${angle}deg) translateZ(${radius}px)`,
+                    transform: `rotateY(${angle}deg) translateZ(180px)`,
+                    transformStyle: 'preserve-3d',
                   }}
                 >
-                  <motion.div
-                    className="group relative flex flex-col items-center gap-3"
-                    // Rotate items back to face viewer
-                    initial={{ rotateY: -angle }}
-                    animate={{ rotateY: -angle - 360 }} // Counter-rotate to stay facing front? No, billboards usually static.
-                  // Actually, for a carousel, we usually want them facing outward or facing camera.
-                  // Facing camera requires rotating opposite to parent.
-                  // Since parent rotates 0->360, children should rotate 0->-360 relative to parent? 
-                  // Let's try simpler: Just panels facing outward.
-                  // If user wants them always readable, we need a billboard.
-                  >
-                    {/* Card */}
-                    <div className="w-32 h-40 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/20 transition-colors duration-300 shadow-[0_0_30px_rgba(0,0,0,0.2)]">
-                      <div className="w-16 h-16 mb-3 rounded-full bg-white/90 p-2 flex items-center justify-center shadow-inner">
-                        <img
-                          src={cert.src}
-                          alt={cert.alt}
-                          className="w-full h-full object-contain"
-                        />
-                      </div>
-                      <span className="text-xs font-bold text-white text-center leading-tight">
-                        {cert.name}
-                      </span>
+                  <div className="w-32 h-40 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-4 flex flex-col items-center justify-center hover:bg-white/20 transition-colors duration-300 shadow-[0_0_30px_rgba(0,0,0,0.2)]">
+                    <div className="w-16 h-16 mb-3 rounded-full bg-white/90 p-2 flex items-center justify-center shadow-inner">
+                      <img src={cert.src} alt={cert.alt} className="w-full h-full object-contain" />
                     </div>
-                  </motion.div>
+                    <span className="text-xs font-bold text-white text-center leading-tight">
+                      {cert.name}
+                    </span>
+                  </div>
                 </div>
-              )
+              );
             })}
           </motion.div>
-
-          {/* Floor Reflection/Shadow */}
-          <div className="absolute bottom-10 w-[300px] h-[30px] bg-black/40 blur-xl rounded-[100%] rotation-x-60" />
         </div>
       </div>
     </Section>
-  )
+  );
 }
+
