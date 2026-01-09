@@ -1,7 +1,7 @@
 export const siteContent = {
   brand: {
     name: 'Deva SEA FOOD',
-    tagline: 'Frozen Sea Food • Import & Export',
+    tagline: 'Premium Seafood Exports from India',
     locationLine: 'Cold-chain focused sourcing, processing, and global distribution.',
     address: '3/13, Bye pass road, Madathur, Tuticorin District, Tamil Nadu state, India',
   },
@@ -186,7 +186,7 @@ export const siteContent = {
     ],
   },
   importExport: {
-    title: 'Import & Export',
+    title: 'Export',
     subtitle:
       'We support documentation, packing standards, and cold-chain coordination for cross-border shipments.',
     badges: ['HS Code Support', 'Packing List', 'COO', 'Health Certificate'],
@@ -253,7 +253,7 @@ export const siteContent = {
     title: 'FAQ',
     items: [
       {
-        q: 'Do you support import & export paperwork?',
+        q: 'Do you support export paperwork?',
         a: 'Yes — we can coordinate standard export documentation and align packing/labelling to buyer requirements.',
       },
       {

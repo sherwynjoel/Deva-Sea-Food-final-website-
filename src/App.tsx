@@ -17,7 +17,7 @@ function App() {
       <ScrollProgress />
       <NavButtons />
       {/* Extra top padding so content clears the floating nav bar */}
-      <main id="main" className="pt-24 pb-24 sm:pt-28 sm:pb-28">
+      <main id="main" className="pb-24 sm:pb-28">
         <Hero />
         <WaveDivider className="opacity-80" />
         <About />
