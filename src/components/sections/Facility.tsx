@@ -6,45 +6,72 @@ import { Reveal } from '../motion/Reveal'
 import { GlassCard } from '../ui/GlassCard'
 import { Section } from '../ui/Section'
 
-function FacilitySlide({ img }: { img: { src: string; alt: string } }) {
+function FacilitySlide({ img, index }: { img: { src: string; alt: string }; index: number }) {
   const [imageError, setImageError] = useState(false)
 
   return (
     <div
       data-slide
       className="flex shrink-0 snap-center justify-center px-2"
-      style={{ 
-        width: 'calc(100vw - 4rem)', 
+      style={{
+        width: 'calc(100vw - 4rem)',
         maxWidth: '600px',
         minWidth: '280px'
       }}
     >
       <div className="w-full max-w-full">
-        <div className="relative overflow-hidden rounded-3xl border border-white/15 bg-white/5">
-          <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-black/20 z-10" aria-hidden="true" />
-          {!imageError && (
-            <img
-              src={img.src}
-              alt={img.alt}
-              className="h-[220px] w-full object-cover sm:h-[300px] lg:h-[400px]"
-              loading="lazy"
-              onError={() => setImageError(true)}
-            />
-          )}
-          {imageError && (
-            <div className="grid h-[220px] place-items-center p-4 sm:h-[300px] sm:p-6 lg:h-[400px]">
-              <div className="glass rounded-3xl px-4 py-3 text-center sm:px-5 sm:py-4">
-                <div className="mx-auto inline-flex items-center gap-2 text-xs font-semibold sm:text-sm">
-                  <ImageIcon className="h-4 w-4 text-ocean-200 shrink-0" />
-                  <span>Facility image coming soon</span>
+        <GlassCard className="relative overflow-hidden p-0 h-[280px] sm:h-[360px] lg:h-[440px]">
+          {/* Default state - show image if available */}
+          {!imageError ? (
+            <div className="relative h-full w-full group">
+              <img
+                src={img.src}
+                alt={img.alt}
+                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
+                onError={() => setImageError(true)}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60" />
+              <div className="absolute bottom-6 left-6 right-6">
+                <span className="text-4xl font-bold text-white/10 select-none">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+              </div>
+            </div>
+          ) : (
+            /* Error/Placeholder state - Premium look */
+            <div className="relative h-full w-full flex flex-col items-center justify-center bg-white/5 p-8 text-center">
+              {/* Decorative background pattern */}
+              <div className="absolute inset-0 opacity-20"
+                style={{
+                  backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0)',
+                  backgroundSize: '24px 24px'
+                }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-br from-ocean-500/10 via-transparent to-purple-500/10" />
+
+              <div className="relative z-10 flex flex-col items-center">
+                <div className="mb-6 rounded-full bg-white/5 p-4 ring-1 ring-white/10 backdrop-blur-sm">
+                  <ImageIcon className="h-8 w-8 text-white/40" />
                 </div>
-                <p className="mt-2 max-w-md text-xs text-white/75 sm:text-sm break-words">
-                  Add your facility photos to replace these placeholders.
+                <h3 className="text-lg font-semibold text-white/90">Image Coming Soon</h3>
+                <p className="mt-2 text-sm text-white/50 max-w-[200px]">
+                  We are currently updating our facility gallery. Check back later.
                 </p>
+                <div className="mt-8 border-t border-white/10 pt-4 w-12 flex justify-center">
+                  <div className="h-1 w-1 rounded-full bg-white/20 mx-1" />
+                  <div className="h-1 w-1 rounded-full bg-white/20 mx-1" />
+                  <div className="h-1 w-1 rounded-full bg-white/20 mx-1" />
+                </div>
+              </div>
+
+              {/* Large number watermark */}
+              <div className="absolute bottom-4 right-6 text-6xl font-bold text-white/5 select-none pointer-events-none">
+                {String(index + 1).padStart(2, '0')}
               </div>
             </div>
           )}
-        </div>
+        </GlassCard>
       </div>
     </div>
   )
@@ -77,11 +104,11 @@ export function Facility() {
     const add = (mq as any).addEventListener ? 'addEventListener' : 'addListener'
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const remove = (mq as any).removeEventListener ? 'removeEventListener' : 'removeListener'
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    ;(mq as any)[add]('change', sync)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ; (mq as any)[add]('change', sync)
     return () => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ;(mq as any)[remove]('change', sync)
+      ; (mq as any)[remove]('change', sync)
     }
   }, [])
 
@@ -229,8 +256,8 @@ export function Facility() {
                 )}
                 style={{ maxWidth: '100%' }}
               >
-                {items.map((img) => (
-                  <FacilitySlide key={img.src} img={img} />
+                {items.map((img, i) => (
+                  <FacilitySlide key={img.src} img={img} index={i} />
                 ))}
               </div>
 

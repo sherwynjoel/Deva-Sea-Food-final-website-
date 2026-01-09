@@ -22,8 +22,6 @@ export function WhatWeOffer() {
   const [active, setActive] = useState(0)
   const scrollerRef = useRef<HTMLDivElement | null>(null)
   const regionRef = useRef<HTMLDivElement | null>(null)
-  const [paused, setPaused] = useState(false)
-  const [reduceMotion, setReduceMotion] = useState(false)
 
   const icons = useMemo(() => items.map((_, i) => iconByIndex[i % iconByIndex.length]), [items])
 
@@ -36,23 +34,6 @@ export function WhatWeOffer() {
     if (!target) return
     scroller.scrollTo({ left: target.offsetLeft, behavior: 'smooth' })
   }
-
-  useEffect(() => {
-    if (typeof window === 'undefined' || !('matchMedia' in window)) return
-    const mq = window.matchMedia('(prefers-reduced-motion: reduce)')
-    const sync = () => setReduceMotion(Boolean(mq.matches))
-    sync()
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const add = (mq as any).addEventListener ? 'addEventListener' : 'addListener'
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const remove = (mq as any).removeEventListener ? 'removeEventListener' : 'removeListener'
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ; (mq as any)[add]('change', sync)
-    return () => {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ; (mq as any)[remove]('change', sync)
-    }
-  }, [])
 
   useEffect(() => {
     const scroller = scrollerRef.current
@@ -133,19 +114,6 @@ export function WhatWeOffer() {
               role="region"
               aria-roledescription="carousel"
               aria-label="What we offer"
-              onMouseEnter={() => setPaused(true)}
-              onMouseLeave={() => setPaused(false)}
-              onPointerDown={() => setPaused(true)}
-              onPointerUp={() => setPaused(false)}
-              onFocusCapture={() => setPaused(true)}
-              onBlurCapture={() => {
-                window.setTimeout(() => {
-                  const el = regionRef.current
-                  if (!el) return
-                  const ae = document.activeElement
-                  setPaused(Boolean(ae && el.contains(ae)))
-                }, 0)
-              }}
             >
               <div className="flex items-center justify-between gap-3 mb-4">
                 <p className="text-sm font-semibold text-white/85 whitespace-nowrap">

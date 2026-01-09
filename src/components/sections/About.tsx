@@ -1,4 +1,3 @@
-import { Sparkles } from 'lucide-react'
 import { siteContent } from '../../content/siteContent'
 import { Reveal } from '../motion/Reveal'
 import { GlassCard } from '../ui/GlassCard'

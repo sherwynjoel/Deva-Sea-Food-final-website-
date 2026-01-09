@@ -186,10 +186,10 @@ export const siteContent = {
       'Cold-chain handling & loading discipline',
     ],
     images: [
-      { src: '/facility-1.jpg', alt: 'Facility photo 1' },
-      { src: '/facility-2.jpg', alt: 'Facility photo 2' },
-      { src: '/facility-3.jpg', alt: 'Facility photo 3' },
-      { src: '/facility-4.jpg', alt: 'Facility photo 4' },
+      { src: '/Facility photos 1.png', alt: 'Facility photo 1' },
+      { src: '/Facility photos 2.png', alt: 'Facility photo 2' },
+      { src: '/Facility photo 3.png', alt: 'Facility photo 3' },
+      { src: '/Facility photos 4.png', alt: 'Facility photo 4' },
     ],
   },
   importExport: {
