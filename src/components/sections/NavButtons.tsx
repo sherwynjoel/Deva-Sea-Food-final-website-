@@ -77,9 +77,11 @@ export function NavButtons() {
               <img
                 src="/logo.png"
                 alt="Deva Sea Food Logo"
-                className="h-10 w-10 sm:h-12 sm:w-12 lg:h-14 lg:w-14 object-cover rounded-xl ring-2 ring-white/20"
+                className="h-10 w-10 sm:h-12 sm:w-12 lg:h-14 lg:w-14 object-cover rounded-full ring-2 ring-white/20"
               />
-
+              <span className="hidden sm:block text-sm sm:text-base lg:text-lg font-bold text-white/90 whitespace-nowrap">
+                Deva Sea Food
+              </span>
             </a>
 
             {/* Navigation links on the right */}

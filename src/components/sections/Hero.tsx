@@ -3,6 +3,7 @@ import { ArrowRight } from 'lucide-react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { siteContent } from '../../content/siteContent'
 import { GlassButton } from '../ui/GlassButton'
+import oceanBg from '../../assets/ocean-background.png'
 
 import { Container } from '../ui/Container'
 
@@ -24,7 +25,12 @@ export function Hero() {
   return (
     <section id="top" className="relative overflow-hidden pt-32 pb-16 sm:pt-40 sm:pb-20">
       {/* Background overlay */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800">
+      <div className="absolute inset-0 z-0">
+        <img
+          src={oceanBg}
+          alt="Ocean background"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
         {/* Bottom fade to blend with next section */}
         <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-b from-transparent to-[rgb(var(--page-bg))]" />
       </div>

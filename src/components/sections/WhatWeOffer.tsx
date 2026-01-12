@@ -153,16 +153,16 @@ export function WhatWeOffer() {
                     <div
                       key={p.title}
                       data-slide
-                      className="flex shrink-0 snap-center justify-center"
-                      style={{ width: 'calc(100vw - 2rem)', maxWidth: '760px' }}
+                      className="flex shrink-0 snap-center justify-center px-1"
+                      style={{ width: 'calc(100vw - 4rem)', maxWidth: '640px' }}
                     >
-                      <div className="relative flex w-full min-h-[320px] sm:min-h-[360px] flex-col overflow-hidden rounded-2xl border border-white/15">
+                      <div className="relative flex w-full min-h-[280px] sm:min-h-[320px] flex-col rounded-2xl border border-white/15" style={{ overflow: 'hidden' }}>
                         {/* Background image */}
                         <div className="absolute inset-0">
                           <img
                             src={bgImage}
                             alt=""
-                            className="h-full w-full object-cover"
+                            className="h-full w-full object-cover object-center"
                           />
                           {/* Dark overlay for text readability */}
                           <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/30" />

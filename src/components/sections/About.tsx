@@ -47,9 +47,9 @@ export function About() {
               />
 
               {/* Image container with proper sizing */}
-              <div className="relative overflow-hidden rounded-2xl border-2 border-white/20 shadow-2xl">
+              <div className="relative overflow-hidden rounded-2xl border-2 border-white/20 shadow-2xl h-full">
                 {/* Team photo - full width with proper aspect ratio */}
-                <div className="relative aspect-[16/10] sm:aspect-[16/9] w-full">
+                <div className="relative aspect-[16/10] sm:aspect-[16/9] lg:aspect-auto lg:h-full w-full">
                   <img
                     src="/team thumbs-up.png"
                     alt="Deva Sea Food Team"
