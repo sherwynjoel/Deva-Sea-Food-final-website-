@@ -1,10 +1,28 @@
-import { Goal, Sparkles, Telescope } from 'lucide-react'
+import { Eye, Target, Gem } from 'lucide-react'
 import { siteContent } from '../../content/siteContent'
 import { Reveal } from '../motion/Reveal'
-import { GlassCard } from '../ui/GlassCard'
 import { Section } from '../ui/Section'
+import { cn } from '../../lib/cn'
 
-const icons = [Telescope, Sparkles, Goal]
+const icons = [Target, Eye, Gem]
+
+const cardStyles = [
+  {
+    topBg: 'from-cyan-400 via-blue-400 to-blue-500',
+    iconBg: 'from-blue-500 to-cyan-600',
+    texturedBg: 'bg-[url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'100\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence baseFrequency=\'0.9\' numOctaves=\'4\'/%3E%3C/filter%3E%3Crect width=\'100\' height=\'100\' filter=\'url(%23noise)\' opacity=\'0.15\'/%3E%3C/svg%3E")]',
+  },
+  {
+    topBg: 'from-red-400 via-rose-400 to-pink-500',
+    iconBg: 'from-rose-500 to-red-600',
+    texturedBg: 'bg-[url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'100\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence baseFrequency=\'0.9\' numOctaves=\'4\'/%3E%3C/filter%3E%3Crect width=\'100\' height=\'100\' filter=\'url(%23noise)\' opacity=\'0.15\'/%3E%3C/svg%3E")]',
+  },
+  {
+    topBg: 'from-orange-400 via-amber-400 to-yellow-500',
+    iconBg: 'from-amber-500 to-orange-600',
+    texturedBg: 'bg-[url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'100\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence baseFrequency=\'0.9\' numOctaves=\'4\'/%3E%3C/filter%3E%3Crect width=\'100\' height=\'100\' filter=\'url(%23noise)\' opacity=\'0.15\'/%3E%3C/svg%3E")]',
+  },
+]
 
 export function VisionMissionGoals() {
   return (
@@ -26,38 +44,59 @@ export function VisionMissionGoals() {
           const isValues = c.title.toLowerCase() === 'values'
           return (
             <Reveal key={c.title} className="h-full" delay={0.04 * idx}>
-              <GlassCard className="flex h-full min-h-[280px] flex-col p-5 sm:p-7 sm:min-h-[360px] lg:min-h-[420px]">
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <p className="text-xs font-semibold tracking-[0.22em] text-white/65">
-                      OUR {c.title.toUpperCase()}
-                    </p>
-                    <p className="heading-font mt-2 text-xl font-semibold tracking-tight">{c.title}</p>
+              <div className="relative flex flex-col h-full rounded-2xl overflow-hidden shadow-2xl transition-all duration-300 hover:scale-[1.02] hover:shadow-3xl bg-ocean-50">
+                {/* Colored Top Section */}
+                <div className={cn(
+                  'relative flex-shrink-0 h-32 sm:h-36 bg-gradient-to-br',
+                  cardStyles[idx].topBg,
+                  cardStyles[idx].texturedBg,
+                  'bg-blend-overlay'
+                )}>
+                  {/* Title - White text on colored background */}
+                  <div className="flex items-center justify-center h-full px-4">
+                    <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-white drop-shadow-lg">
+                      {c.title.toUpperCase()}
+                    </h3>
                   </div>
-                  <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-white/5 ring-1 ring-white/10">
-                    <Icon className="h-5 w-5 text-ocean-200" />
-                  </span>
                 </div>
 
-                <div className="mt-4 flex flex-1 flex-col">
-                  {c.body ? (
-                    <p className="text-sm leading-relaxed text-white/75 sm:text-base">{c.body}</p>
-                  ) : null}
+                {/* Hexagonal Icon Badge - Overlapping at intersection */}
+                <div className="absolute left-1/2 top-32 sm:top-36 -translate-x-1/2 -translate-y-1/2 z-10">
+                  <div className={cn(
+                    'hex-badge w-20 h-20 sm:w-24 sm:h-24',
+                    'bg-gradient-to-br shadow-2xl ring-4 ring-ocean-50',
+                    cardStyles[idx].iconBg
+                  )}>
+                    <Icon className="h-9 w-9 sm:h-11 sm:w-11 text-white drop-shadow-lg" />
+                  </div>
+                </div>
 
-                  {c.bullets.length ? (
-                    <div className="mt-auto pt-6">
-                      <div className="grid gap-3">
-                        {c.bullets.map((b) => (
-                          <div key={b} className="flex items-start gap-2 text-sm text-white/80">
-                            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-ocean-200/80" />
-                            <span className={isValues ? 'leading-relaxed' : undefined}>{b}</span>
-                          </div>
-                        ))}
+                {/* Ocean Blue Bottom Section - grows with content */}
+                <div className="flex-1 bg-ocean-50 px-5 sm:px-6 pt-12 sm:pt-14 pb-6">
+                  <div className="flex flex-col h-full">
+                    {/* Body text */}
+                    {c.body ? (
+                      <p className="text-sm leading-relaxed text-ocean-800 sm:text-base text-center mb-4">
+                        {c.body}
+                      </p>
+                    ) : null}
+
+                    {/* Bullets */}
+                    {c.bullets.length ? (
+                      <div className="mt-auto">
+                        <div className="grid gap-2.5">
+                          {c.bullets.map((b) => (
+                            <div key={b} className="flex items-start gap-2 text-sm text-ocean-700">
+                              <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-ocean-400" />
+                              <span className={isValues ? 'leading-relaxed' : undefined}>{b}</span>
+                            </div>
+                          ))}
+                        </div>
                       </div>
-                    </div>
-                  ) : null}
+                    ) : null}
+                  </div>
                 </div>
-              </GlassCard>
+              </div>
             </Reveal>
           )
         })}

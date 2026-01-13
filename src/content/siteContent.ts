@@ -118,21 +118,21 @@ export const siteContent = {
     subtitle: 'Clear principles that guide how we source, process, and deliver seafood worldwide.',
     cards: [
       {
-        title: 'Vision',
-        body: 'To be a globally respected exporter of premium seafood, recognized for integrity, consistent quality, and responsible sourcing across international markets.',
-        bullets: [
-          'Integrity-led international reputation',
-          'Consistency across every consignment',
-          'Responsible sourcing for long-term ocean health',
-        ],
-      },
-      {
         title: 'Mission',
         body: 'To responsibly source, process, and export premium seafood by preserving natural quality, ensuring food safety, and delivering reliable value through precision-driven operations and strong partnerships.',
         bullets: [
           'Preserve natural flavour, texture, and purity',
           'Food-safety discipline and export compliance',
           'Reliable delivery through strong partnerships',
+        ],
+      },
+      {
+        title: 'Vision',
+        body: 'To be a globally respected exporter of premium seafood, recognized for integrity, consistent quality, and responsible sourcing across international markets.',
+        bullets: [
+          'Integrity-led international reputation',
+          'Consistency across every consignment',
+          'Responsible sourcing for long-term ocean health',
         ],
       },
       {
