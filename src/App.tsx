@@ -12,35 +12,42 @@ import { NavButtons } from './components/sections/NavButtons'
 import { WaveDivider } from './components/ui/WaveDivider'
 import { ScrollProgress } from './components/motion/ScrollProgress'
 
+import { LiquidBackground } from './components/ui/LiquidBackground'
+import { StructuredData } from './components/StructuredData'
+
 function App() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative overflow-hidden bg-ocean-50">
+      <StructuredData />
+      <LiquidBackground />
       <ScrollProgress />
-      <NavButtons />
-      {/* Extra top padding so content clears the floating nav bar */}
-      <main id="main" className="pb-24 sm:pb-28">
-        <Hero />
-        <WaveDivider className="opacity-80" />
-        <About />
-        <WaveDivider />
-        <VisionMissionGoals />
-        <WaveDivider />
-        <WhatWeOffer />
-        <WaveDivider />
-        <Facility />
+      <div className="relative z-10">
+        <NavButtons />
+        {/* Extra top padding so content clears the floating nav bar */}
+        <main id="main" className="pb-24 sm:pb-28">
+          <Hero />
+          <WaveDivider className="opacity-80" />
+          <About />
+          <WaveDivider />
+          <VisionMissionGoals />
+          <WaveDivider />
+          <WhatWeOffer />
+          <WaveDivider />
+          <Facility />
 
-        <WaveDivider />
+          <WaveDivider />
 
 
 
-        <Portfolio />
-        <WaveDivider />
-        <Certifications />
-        <WaveDivider />
+          <Portfolio />
+          <WaveDivider />
+          <Certifications />
+          <WaveDivider />
 
-        <Contact />
-      </main>
-      <Footer />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
     </div>
   )
 }

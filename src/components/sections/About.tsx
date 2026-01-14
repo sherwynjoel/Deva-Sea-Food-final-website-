@@ -53,6 +53,7 @@ export function About() {
                   <img
                     src="/team thumbs-up.png"
                     alt="Deva Sea Food Team"
+                    loading="lazy"
                     className="absolute inset-0 w-full h-full object-cover object-center"
                   />
 
