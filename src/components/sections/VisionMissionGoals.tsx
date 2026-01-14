@@ -33,7 +33,7 @@ export function VisionMissionGoals() {
             <h2 className="heading-font text-2xl font-semibold tracking-tight sm:text-3xl lg:text-4xl">
               {siteContent.vmg.title}
             </h2>
-            <p className="mt-3 max-w-2xl text-white/75">{siteContent.vmg.subtitle}</p>
+            <p className="mt-3 max-w-2xl text-ocean-950/75">{siteContent.vmg.subtitle}</p>
           </div>
         </div>
       </Reveal>

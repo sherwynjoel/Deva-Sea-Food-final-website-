@@ -83,7 +83,7 @@ export function WhatWeOffer() {
     <Section id="what-we-offer">
       <div className="grid gap-8 lg:grid-cols-12 lg:items-start">
         <Reveal className="lg:col-span-4">
-          <p className="text-xs font-semibold tracking-[0.22em] text-white/70">
+          <p className="text-xs font-semibold tracking-[0.22em] text-ocean-950/70">
             {siteContent.offer.titleSmall}
           </p>
           <h2 className="heading-font mt-4 text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
@@ -97,7 +97,7 @@ export function WhatWeOffer() {
               </span>
               <div className="min-w-0">
                 <p className="text-sm font-semibold">Designed for trade-ready seafood</p>
-                <p className="mt-2 text-sm text-white/75">
+                <p className="mt-2 text-sm text-ocean-950/75">
                   Built around export discipline: quality checkpoints, cold-chain handling, and
                   predictable packing specs for buyers.
                 </p>
@@ -110,14 +110,14 @@ export function WhatWeOffer() {
           <Reveal>
             <div
               ref={regionRef}
-              className="glass rounded-3xl border border-white/10 p-4 sm:p-5 overflow-hidden"
+              className="glass rounded-3xl border border-ocean-900/10 p-4 sm:p-5 overflow-hidden"
               role="region"
               aria-roledescription="carousel"
               aria-label="What we offer"
             >
               <div className="flex items-center justify-between gap-3 mb-4">
-                <p className="text-sm font-semibold text-white/85 whitespace-nowrap">
-                  Offer highlights <span className="text-white/55">({active + 1}/{items.length})</span>
+                <p className="text-sm font-semibold text-ocean-950/85 whitespace-nowrap">
+                  Offer highlights <span className="text-ocean-950/55">({active + 1}/{items.length})</span>
                 </p>
                 <div className="flex items-center gap-2 shrink-0">
                   <button
@@ -126,7 +126,7 @@ export function WhatWeOffer() {
                     onClick={() => scrollToIndex(active - 1)}
                     aria-label="Previous"
                   >
-                    <ChevronLeft className="h-5 w-5 text-white/85" />
+                    <ChevronLeft className="h-5 w-5 text-ocean-950/85" />
                   </button>
                   <button
                     type="button"
@@ -134,7 +134,7 @@ export function WhatWeOffer() {
                     onClick={() => scrollToIndex(active + 1)}
                     aria-label="Next"
                   >
-                    <ChevronRight className="h-5 w-5 text-white/85" />
+                    <ChevronRight className="h-5 w-5 text-ocean-950/85" />
                   </button>
                 </div>
               </div>

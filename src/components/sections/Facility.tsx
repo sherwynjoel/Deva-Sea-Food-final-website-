@@ -163,32 +163,32 @@ export function Facility() {
         <Reveal className="lg:col-span-4 h-full">
           <div className="flex h-full flex-col">
             <div>
-              <p className="text-xs font-semibold tracking-[0.22em] text-white/70">
+              <p className="text-xs font-semibold tracking-[0.22em] text-ocean-950/70">
                 {siteContent.facility.titleSmall}
               </p>
               <h2 className="heading-font mt-4 text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
                 {siteContent.facility.headline}
               </h2>
-              <p className="mt-4 text-sm text-white/75 sm:text-base">{siteContent.facility.subtitle}</p>
+              <p className="mt-4 text-sm text-ocean-950/75 sm:text-base">{siteContent.facility.subtitle}</p>
             </div>
 
             <GlassCard className="mt-6 p-6 lg:mt-auto">
               <div className="flex items-start gap-3">
-                <span className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-white/5 ring-1 ring-white/10">
-                  <Warehouse className="h-5 w-5 text-ocean-200" />
+                <span className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-ocean-900/5 ring-1 ring-ocean-900/10">
+                  <Warehouse className="h-5 w-5 text-ocean-600" />
                 </span>
                 <div className="min-w-0">
                   <p className="text-sm font-semibold">Facility highlights</p>
                   <div className="mt-3 grid gap-2">
                     {siteContent.facility.highlights.map((t, idx) => (
-                      <div key={t} className="flex items-start gap-2 text-sm text-white/75">
-                        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-ocean-200/80" />
+                      <div key={t} className="flex items-start gap-2 text-sm text-ocean-950/75">
+                        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-ocean-500/80" />
                         <span className="min-w-0">{t}</span>
                         {idx === 0 ? (
-                          <ShieldCheck className="ml-auto mt-0.5 h-4 w-4 shrink-0 text-ocean-200/80" />
+                          <ShieldCheck className="ml-auto mt-0.5 h-4 w-4 shrink-0 text-ocean-600/80" />
                         ) : null}
                         {idx === 1 ? (
-                          <Snowflake className="ml-auto mt-0.5 h-4 w-4 shrink-0 text-ocean-200/80" />
+                          <Snowflake className="ml-auto mt-0.5 h-4 w-4 shrink-0 text-ocean-600/80" />
                         ) : null}
                       </div>
                     ))}
@@ -203,7 +203,7 @@ export function Facility() {
           <Reveal>
             <div
               ref={regionRef}
-              className="glass flex h-full flex-col rounded-3xl border border-white/10 p-4 sm:p-5 overflow-hidden max-w-full"
+              className="glass flex h-full flex-col rounded-3xl border border-ocean-950/10 p-4 sm:p-5 overflow-hidden max-w-full"
               role="region"
               aria-roledescription="carousel"
               aria-label="Facility photos"
@@ -222,9 +222,9 @@ export function Facility() {
               }}
             >
               <div className="flex items-center justify-between gap-3 mb-4">
-                <p className="text-sm font-semibold text-white/85 whitespace-nowrap">
+                <p className="text-sm font-semibold text-ocean-950/85 whitespace-nowrap">
                   Facility photos{' '}
-                  <span className="text-white/55">
+                  <span className="text-ocean-950/55">
                     ({active + 1}/{items.length})
                   </span>
                 </p>
@@ -235,7 +235,7 @@ export function Facility() {
                     onClick={() => scrollToIndex(active - 1)}
                     aria-label="Previous"
                   >
-                    <ChevronLeft className="h-5 w-5 text-white/85" />
+                    <ChevronLeft className="h-5 w-5 text-ocean-950/85" />
                   </button>
                   <button
                     type="button"
@@ -243,7 +243,7 @@ export function Facility() {
                     onClick={() => scrollToIndex(active + 1)}
                     aria-label="Next"
                   >
-                    <ChevronRight className="h-5 w-5 text-white/85" />
+                    <ChevronRight className="h-5 w-5 text-ocean-950/85" />
                   </button>
                 </div>
               </div>

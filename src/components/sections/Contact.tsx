@@ -51,22 +51,22 @@ export function Contact() {
           <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl lg:text-4xl text-center sm:text-left">
             {siteContent.contact.title}
           </h2>
-          <p className="mt-3 text-white/75 text-center sm:text-left">{siteContent.contact.subtitle}</p>
+          <p className="mt-3 text-ocean-950/75 text-center sm:text-left">{siteContent.contact.subtitle}</p>
 
           <div className="mt-4 sm:mt-6 grid gap-2 sm:gap-3">
             <div className="glass rounded-xl sm:rounded-2xl p-3 sm:p-4">
               <div className="flex items-center gap-2 text-sm font-semibold">
-                <Mail className="h-4 w-4 text-ocean-200" />
+                <Mail className="h-4 w-4 text-ocean-600" />
                 <span>Email</span>
               </div>
               <div className="mt-2 space-y-1">
-                <p className="text-sm text-white/75">
-                  <a href={`mailto:${siteContent.contact.emails[0]}`} className="hover:text-white">
+                <p className="text-sm text-ocean-950/75">
+                  <a href={`mailto:${siteContent.contact.emails[0]}`} className="hover:text-ocean-950">
                     {siteContent.contact.emails[0]}
                   </a>
                 </p>
-                <p className="text-sm text-white/75">
-                  <a href={`mailto:${siteContent.contact.emails[1]}`} className="hover:text-white">
+                <p className="text-sm text-ocean-950/75">
+                  <a href={`mailto:${siteContent.contact.emails[1]}`} className="hover:text-ocean-950">
                     {siteContent.contact.emails[1]}
                   </a>
                 </p>
@@ -74,22 +74,22 @@ export function Contact() {
             </div>
             <div className="glass rounded-xl sm:rounded-2xl p-3 sm:p-4">
               <div className="flex items-center gap-2 text-sm font-semibold">
-                <PhoneCall className="h-4 w-4 text-ocean-200" />
+                <PhoneCall className="h-4 w-4 text-ocean-600" />
                 <span>Phone</span>
               </div>
-              <p className="mt-2 text-sm text-white/75">
-                <a href={`tel:${siteContent.contact.phone}`} className="hover:text-white">
+              <p className="mt-2 text-sm text-ocean-950/75">
+                <a href={`tel:${siteContent.contact.phone}`} className="hover:text-ocean-950">
                   {siteContent.contact.phone}
                 </a>
               </p>
             </div>
             <div className="glass rounded-xl sm:rounded-2xl p-3 sm:p-4">
               <div className="flex items-center gap-2 text-sm font-semibold">
-                <MessageCircle className="h-4 w-4 text-ocean-200" />
+                <MessageCircle className="h-4 w-4 text-ocean-600" />
                 <span>WhatsApp</span>
               </div>
-              <p className="mt-2 text-sm text-white/75">
-                <a href={`https://wa.me/${siteContent.contact.phone.replace(/\D/g, '')}`} className="hover:text-white" target="_blank" rel="noopener noreferrer">
+              <p className="mt-2 text-sm text-ocean-950/75">
+                <a href={`https://wa.me/${siteContent.contact.phone.replace(/\D/g, '')}`} className="hover:text-ocean-950" target="_blank" rel="noopener noreferrer">
                   {siteContent.contact.phone}
                 </a>
               </p>
@@ -108,7 +108,7 @@ export function Contact() {
             >
               <div className="grid gap-4 sm:grid-cols-2">
                 <div>
-                  <label htmlFor="name" className="text-xs font-semibold text-white/70">
+                  <label htmlFor="name" className="text-xs font-semibold text-ocean-950/70">
                     Name
                   </label>
                   <GlassInput
@@ -122,7 +122,7 @@ export function Contact() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="company" className="text-xs font-semibold text-white/70">
+                  <label htmlFor="company" className="text-xs font-semibold text-ocean-950/70">
                     Company
                   </label>
                   <GlassInput
@@ -138,7 +138,7 @@ export function Contact() {
 
               <div className="grid gap-4 sm:grid-cols-2">
                 <div>
-                  <label htmlFor="email" className="text-xs font-semibold text-white/70">
+                  <label htmlFor="email" className="text-xs font-semibold text-ocean-950/70">
                     Email
                   </label>
                   <GlassInput
@@ -153,7 +153,7 @@ export function Contact() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="phone" className="text-xs font-semibold text-white/70">
+                  <label htmlFor="phone" className="text-xs font-semibold text-ocean-950/70">
                     Phone / WhatsApp
                   </label>
                   <GlassInput
@@ -168,7 +168,7 @@ export function Contact() {
               </div>
 
               <div>
-                <label htmlFor="requirement" className="text-xs font-semibold text-white/70">
+                <label htmlFor="requirement" className="text-xs font-semibold text-ocean-950/70">
                   Requirement
                 </label>
                 <GlassTextarea
@@ -190,7 +190,7 @@ export function Contact() {
                   </GlassButton>
                 </a>
                 {submitted ? (
-                  <p className="text-xs font-semibold text-white/65">
+                  <p className="text-xs font-semibold text-ocean-950/65">
                     Draft ready — click “Open mail draft”.
                   </p>
                 ) : null}

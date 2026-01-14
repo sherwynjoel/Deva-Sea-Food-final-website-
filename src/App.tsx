@@ -4,7 +4,8 @@ import { VisionMissionGoals } from './components/sections/VisionMissionGoals'
 import { WhatWeOffer } from './components/sections/WhatWeOffer'
 import { Facility } from './components/sections/Facility'
 import { Portfolio } from './components/sections/Portfolio'
-import { ImageCarousel } from './components/sections/ImageCarousel'
+import { Certifications } from './components/sections/Certifications'
+
 import { Contact } from './components/sections/Contact'
 import { Footer } from './components/sections/Footer'
 import { NavButtons } from './components/sections/NavButtons'
@@ -27,11 +28,16 @@ function App() {
         <WhatWeOffer />
         <WaveDivider />
         <Facility />
+
         <WaveDivider />
+
+
+
         <Portfolio />
         <WaveDivider />
-        <ImageCarousel />
+        <Certifications />
         <WaveDivider />
+
         <Contact />
       </main>
       <Footer />

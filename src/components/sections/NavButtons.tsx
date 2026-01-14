@@ -57,7 +57,7 @@ export function NavButtons() {
       <nav className="fixed top-3 sm:top-4 lg:top-5 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-5xl">
         <div
           className={cn(
-            'glass rounded-2xl border border-white/15 backdrop-blur-2xl',
+            'glass rounded-2xl border border-ocean-950/15 backdrop-blur-2xl',
             'bg-gradient-to-b from-white/10 via-white/5 to-white/0',
             'shadow-[0_8px_32px_0_rgba(0,0,0,0.4)]',
             'px-3 py-2 sm:px-5 sm:py-3 lg:px-6 lg:py-3'
@@ -79,7 +79,7 @@ export function NavButtons() {
                 alt="Deva Sea Food Logo"
                 className="h-10 w-10 sm:h-12 sm:w-12 lg:h-14 lg:w-14 object-cover rounded-full ring-2 ring-white/20"
               />
-              <span className="hidden sm:block text-sm sm:text-base lg:text-lg font-bold text-white/90 whitespace-nowrap">
+              <span className="hidden sm:block text-sm sm:text-base lg:text-lg font-bold text-ocean-950/90 whitespace-nowrap">
                 Deva Sea Food
               </span>
             </a>
@@ -105,14 +105,14 @@ export function NavButtons() {
                     <Icon
                       className={cn(
                         'h-4 w-4 sm:h-5 sm:w-5 transition-all duration-300 shrink-0',
-                        isActive ? 'text-white' : 'text-white/70'
+                        isActive ? 'text-ocean-950' : 'text-ocean-950/70'
                       )}
                       strokeWidth={isActive ? 2.5 : 2}
                     />
                     <span
                       className={cn(
                         'hidden lg:block text-xs font-medium leading-none transition-all duration-300 whitespace-nowrap',
-                        isActive ? 'text-white' : 'text-white/70'
+                        isActive ? 'text-ocean-950' : 'text-ocean-950/70'
                       )}
                     >
                       {item.label}
