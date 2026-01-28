@@ -15,8 +15,8 @@
     --ocean-600: 2 158 219;
     --ocean-700: 3 124 173;
     --ocean-800: 7 100 138;
-    --ocean-900: 12 82 112;
-    --ocean-950: 8 51 75;
+    --ocean-900: 5 10 15;
+    --ocean-950: 0 0 0;
 
     /* Glass tokens */
     --glass-surface: 255 255 255;
@@ -24,9 +24,9 @@
     --glass-highlight: 255 255 255;
 
     /* Page tokens - Vibrant Blue Background */
-    --page-bg: 0 191 255;
+    --page-bg: 135 206 235;
     /* Full page background #00BFFF */
-    --page-fg: 8 51 75;
+    --page-fg: 0 0 0;
     /* Dark Navy text for contrast */
   }
 
@@ -492,17 +492,21 @@
     }
   }
 }
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
+
 ::-webkit-scrollbar-track {
   background: transparent;
 }
+
 ::-webkit-scrollbar-thumb {
   background: rgb(var(--ocean-400) / 0.5);
   border-radius: 4px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(var(--ocean-600) / 0.8);
 }

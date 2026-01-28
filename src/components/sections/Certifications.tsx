@@ -6,17 +6,6 @@ import { siteContent } from '../../content/siteContent'
 import { Reveal } from '../motion/Reveal'
 import { Section } from '../ui/Section'
 
-// Certification images with names
-const certificationImages = [
-  { src: '/1.jpeg', alt: 'FSSAI', name: 'FSSAI' },
-  { src: '/2.jpg', alt: 'EU Compliance', name: 'EU Compliance' },
-  { src: '/3.jpeg', alt: 'Export Inspection Council', name: 'Export Inspection' },
-  { src: '/4.jpeg', alt: 'FSSC 22000', name: 'FSSC 22000' },
-  { src: '/5.jpeg', alt: 'GMP', name: 'GMP Certified' },
-  { src: '/6.jpeg', alt: 'HACCP', name: 'HACCP' },
-  { src: '/7.jpeg', alt: 'ISO', name: 'ISO Standards' },
-]
-
 export function Certifications() {
   const [isPaused, setIsPaused] = useState(false);
   const rotation = useMotionValue(0);
@@ -25,10 +14,13 @@ export function Certifications() {
   useAnimationFrame((_, delta) => {
     if (!isPaused) {
       // Rotate 360 degrees every 20 seconds (0.018 degrees per ms)
+      // Adjust speed based on number of items to keep consistent spacing feeling
       const move = delta * 0.018;
       rotation.set(rotation.get() + move);
     }
   });
+
+  const logos = siteContent.certifications.logos;
 
   return (
     <Section id="certifications" className="overflow-hidden">
@@ -67,14 +59,14 @@ export function Certifications() {
             }}
           >
 
-            {certificationImages.map((cert, index) => {
-              const angle = index * (360 / certificationImages.length);
+            {logos.map((cert, index) => {
+              const angle = index * (360 / logos.length);
               return (
                 <div
                   key={cert.name}
                   className="absolute left-1/2 top-1/2 -ml-16 -mt-20"
                   style={{
-                    transform: `rotateY(${angle}deg) translateZ(180px)`,
+                    transform: `rotateY(${angle}deg) translateZ(340px)`,
                     transformStyle: 'preserve-3d',
                   }}
                 >

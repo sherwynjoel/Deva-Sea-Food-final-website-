@@ -54,12 +54,12 @@ export function Contact() {
           <p className="mt-3 text-ocean-950/75 text-center sm:text-left">{siteContent.contact.subtitle}</p>
 
           <div className="mt-4 sm:mt-6 grid gap-2 sm:gap-3">
-            <div className="glass rounded-xl sm:rounded-2xl p-3 sm:p-4">
-              <div className="flex items-center gap-2 text-sm font-semibold">
+            <div className="glass rounded-xl sm:rounded-2xl p-3 sm:p-4 flex flex-col items-center text-center">
+              <div className="flex items-center gap-2 text-sm font-semibold mb-2">
                 <Mail className="h-4 w-4 text-ocean-600" />
                 <span>Email</span>
               </div>
-              <div className="mt-2 space-y-1">
+              <div className="space-y-1">
                 <p className="text-sm text-ocean-950/75">
                   <a href={`mailto:${siteContent.contact.emails[0]}`} className="hover:text-ocean-950">
                     {siteContent.contact.emails[0]}
@@ -72,23 +72,23 @@ export function Contact() {
                 </p>
               </div>
             </div>
-            <div className="glass rounded-xl sm:rounded-2xl p-3 sm:p-4">
-              <div className="flex items-center gap-2 text-sm font-semibold">
+            <div className="glass rounded-xl sm:rounded-2xl p-3 sm:p-4 flex flex-col items-center text-center">
+              <div className="flex items-center gap-2 text-sm font-semibold mb-2">
                 <PhoneCall className="h-4 w-4 text-ocean-600" />
                 <span>Phone</span>
               </div>
-              <p className="mt-2 text-sm text-ocean-950/75">
+              <p className="text-sm text-ocean-950/75">
                 <a href={`tel:${siteContent.contact.phone}`} className="hover:text-ocean-950">
                   {siteContent.contact.phone}
                 </a>
               </p>
             </div>
-            <div className="glass rounded-xl sm:rounded-2xl p-3 sm:p-4">
-              <div className="flex items-center gap-2 text-sm font-semibold">
+            <div className="glass rounded-xl sm:rounded-2xl p-3 sm:p-4 flex flex-col items-center text-center">
+              <div className="flex items-center gap-2 text-sm font-semibold mb-2">
                 <MessageCircle className="h-4 w-4 text-ocean-600" />
                 <span>WhatsApp</span>
               </div>
-              <p className="mt-2 text-sm text-ocean-950/75">
+              <p className="text-sm text-ocean-950/75">
                 <a href={`https://wa.me/${siteContent.contact.phone.replace(/\D/g, '')}`} className="hover:text-ocean-950" target="_blank" rel="noopener noreferrer">
                   {siteContent.contact.phone}
                 </a>
@@ -182,9 +182,11 @@ export function Contact() {
               </div>
 
               <div className="flex flex-wrap items-center gap-3 pt-2">
-                <GlassButton type="submit">Generate email</GlassButton>
+                <GlassButton type="submit" className="bg-ocean-600 text-white hover:bg-ocean-700 border-none">
+                  Generate email
+                </GlassButton>
                 <a href={mailto}>
-                  <GlassButton type="button" variant="secondary">
+                  <GlassButton type="button" variant="secondary" className="!text-ocean-950 border-ocean-950/20 hover:bg-ocean-950/5">
                     Open mail draft
                     <Mail className="h-4 w-4" />
                   </GlassButton>

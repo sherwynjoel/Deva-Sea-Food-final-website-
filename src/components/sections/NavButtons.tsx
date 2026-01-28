@@ -1,27 +1,12 @@
-import {
-  Users,
-  Eye,
-  Tag,
-  Building2,
-  Briefcase,
-  MessageSquare
-} from 'lucide-react'
 import { siteContent } from '../../content/siteContent'
 import { cn } from '../../lib/cn'
 import { useState, useEffect } from 'react'
-
-// Map icons to navigation items
-const iconMap: Record<string, typeof Users> = {
-  'about': Users,
-  'vision-mission-goals': Eye,
-  'what-we-offer': Tag,
-  'facility': Building2,
-  'portfolio': Briefcase,
-  'contact': MessageSquare,
-}
+import { Menu, X } from 'lucide-react'
+import { AnimatePresence, motion } from 'framer-motion'
 
 export function NavButtons() {
   const [activeId, setActiveId] = useState<string>('')
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -54,13 +39,14 @@ export function NavButtons() {
       </a>
 
       {/* Navigation Bar with integrated logo */}
-      <nav className="fixed top-3 sm:top-4 lg:top-5 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-5xl">
+      <nav className="fixed top-3 sm:top-4 lg:top-5 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-6xl">
         <div
           className={cn(
-            'glass rounded-2xl border border-ocean-950/15 backdrop-blur-2xl',
-            'bg-gradient-to-b from-white/10 via-white/5 to-white/0',
-            'shadow-[0_8px_32px_0_rgba(0,0,0,0.4)]',
-            'px-3 py-2 sm:px-5 sm:py-3 lg:px-6 lg:py-3'
+            'glass border border-white/20 backdrop-blur-3xl transition-all duration-300',
+            'bg-gradient-to-b from-white/40 via-white/10 to-white/5',
+            'shadow-[0_8px_32px_0_rgba(31,38,135,0.2)]',
+            'px-3 py-2 sm:px-5 sm:py-3 lg:px-6 lg:py-3',
+            isMenuOpen ? 'rounded-3xl bg-white/20' : 'rounded-full'
           )}
           style={{
             background: 'linear-gradient(135deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.06) 50%, rgba(255,255,255,0.03) 100%)',
@@ -68,59 +54,103 @@ export function NavButtons() {
             WebkitBackdropFilter: 'blur(24px) saturate(180%)',
           }}
         >
-          <div className="flex items-center justify-between">
-            {/* Logo on the left */}
-            <a
-              href="#top"
-              className="glass-focus shrink-0 flex items-center gap-2 sm:gap-3 rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 pr-2 sm:pr-3"
-            >
-              <img
-                src="/logo.png"
-                alt="Deva Sea Food Logo"
-                className="h-10 w-10 sm:h-12 sm:w-12 lg:h-14 lg:w-14 object-cover rounded-full ring-2 ring-white/20"
-              />
-              <span className="hidden sm:block text-sm sm:text-base lg:text-lg font-bold text-ocean-950/90 whitespace-nowrap">
-                Deva Sea Food
-              </span>
-            </a>
+          <div className="flex flex-col">
+            <div className="flex items-center justify-between">
+              {/* Logo on the left */}
+              <a
+                href="#top"
+                className="glass-focus shrink-0 flex items-center gap-2 sm:gap-3 rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 pr-2 sm:pr-3"
+              >
+                <img
+                  src="/logo.png"
+                  alt="Deva Sea Food Logo"
+                  className="h-10 w-10 sm:h-12 sm:w-12 lg:h-14 lg:w-14 object-cover rounded-full ring-2 ring-white/20"
+                />
+                <span className="block text-sm sm:text-base lg:text-lg font-black text-ocean-950/90 whitespace-nowrap">
+                  Deva Sea Food
+                </span>
+              </a>
 
-            {/* Navigation links on the right */}
-            <div className="flex items-center gap-0.5 sm:gap-1 lg:gap-2">
-              {siteContent.nav.map((item) => {
-                const Icon = iconMap[item.id] || Users
-                const isActive = activeId === item.id
-
-                return (
-                  <a
-                    key={item.id}
-                    href={`#${item.id}`}
-                    onClick={() => setActiveId(item.id)}
-                    className={cn(
-                      'glass-focus flex items-center justify-center gap-1 sm:gap-1.5',
-                      'shrink-0 px-2 py-1.5 sm:px-3 sm:py-2 lg:px-4 lg:py-2.5 rounded-lg sm:rounded-xl transition-all duration-300 ease-out',
-                      'hover:bg-white/10 active:scale-95',
-                      isActive && 'bg-white/15'
-                    )}
-                  >
-                    <Icon
+              {/* Desktop Navigation links on the right */}
+              <div className="hidden lg:flex items-center gap-0.5 sm:gap-1 lg:gap-2">
+                {siteContent.nav.map((item) => {
+                  const isActive = activeId === item.id
+                  return (
+                    <a
+                      key={item.id}
+                      href={`#${item.id}`}
+                      onClick={() => setActiveId(item.id)}
                       className={cn(
-                        'h-4 w-4 sm:h-5 sm:w-5 transition-all duration-300 shrink-0',
-                        isActive ? 'text-ocean-950' : 'text-ocean-950/70'
-                      )}
-                      strokeWidth={isActive ? 2.5 : 2}
-                    />
-                    <span
-                      className={cn(
-                        'hidden lg:block text-xs font-medium leading-none transition-all duration-300 whitespace-nowrap',
-                        isActive ? 'text-ocean-950' : 'text-ocean-950/70'
+                        'glass-focus flex items-center justify-center gap-2',
+                        'shrink-0 px-3 py-2.5 sm:px-3 sm:py-2 lg:px-4 lg:py-2.5 rounded-xl transition-all duration-300 ease-out',
+                        'hover:bg-white/10 active:scale-95',
+                        isActive && 'bg-white/20 shadow-sm'
                       )}
                     >
-                      {item.label}
-                    </span>
-                  </a>
-                )
-              })}
+                      <span
+                        className={cn(
+                          'text-xs font-medium leading-none transition-all duration-300 whitespace-nowrap',
+                          isActive ? 'text-ocean-950 font-bold' : 'text-ocean-950/80'
+                        )}
+                      >
+                        {item.label}
+                      </span>
+                    </a>
+                  )
+                })}
+              </div>
+
+              {/* Mobile Menu Toggle Button */}
+              <button
+                className="lg:hidden p-2 rounded-xl hover:bg-white/10 text-ocean-950 transition-colors"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                aria-label="Toggle menu"
+              >
+                {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
             </div>
+
+            {/* Mobile Menu Dropdown */}
+            <AnimatePresence>
+              {isMenuOpen && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: 'auto', opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="overflow-hidden lg:hidden"
+                >
+                  <div className="pt-4 pb-2 flex flex-col gap-2 border-t border-white/10 mt-2">
+                    {siteContent.nav.map((item) => {
+                      const isActive = activeId === item.id
+                      return (
+                        <a
+                          key={item.id}
+                          href={`#${item.id}`}
+                          onClick={() => {
+                            setActiveId(item.id)
+                            setIsMenuOpen(false)
+                          }}
+                          className={cn(
+                            'glass-focus flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300',
+                            isActive ? 'bg-white/20 shadow-sm' : 'hover:bg-white/10'
+                          )}
+                        >
+                          <span
+                            className={cn(
+                              'text-sm font-medium',
+                              isActive ? 'text-ocean-950 font-bold' : 'text-ocean-950/90'
+                            )}
+                          >
+                            {item.label}
+                          </span>
+                        </a>
+                      )
+                    })}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </div>
       </nav>

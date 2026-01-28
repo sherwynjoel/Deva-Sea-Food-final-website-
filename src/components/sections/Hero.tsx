@@ -3,7 +3,7 @@ import { ArrowRight } from 'lucide-react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { siteContent } from '../../content/siteContent'
 import { GlassButton } from '../ui/GlassButton'
-import oceanBg from '../../assets/ocean-background.png'
+
 
 import { Container } from '../ui/Container'
 
@@ -27,7 +27,7 @@ export function Hero() {
       {/* Background overlay */}
       <div className="absolute inset-0 z-0">
         <img
-          src={oceanBg}
+          src="/hero-enhanced.png"
           alt="Ocean background"
           className="absolute inset-0 h-full w-full object-cover"
         />
@@ -42,14 +42,14 @@ export function Hero() {
               Removing them is cleaner for video background. */}
 
           <div className="grid items-center gap-8 sm:gap-10 lg:grid-cols-12">
-            <div className="lg:col-span-7" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.7), 0 4px 16px rgba(0,0,0,0.5)' }}>
-              <p className="text-sm sm:text-base font-bold tracking-[0.15em] text-white text-center sm:text-left uppercase">
+            <div className="lg:col-span-7">
+              <p className="text-sm sm:text-base font-bold tracking-[0.15em] text-ocean-950 text-center sm:text-left uppercase">
                 {siteContent.hero.motto}
               </p>
-              <h1 className="mt-4 text-balance text-xl font-semibold tracking-tight sm:text-2xl lg:text-3xl text-center sm:text-left text-white leading-relaxed">
+              <h1 className="mt-4 text-balance text-xl font-semibold tracking-tight sm:text-2xl lg:text-3xl text-center sm:text-left text-ocean-950 leading-relaxed">
                 {siteContent.hero.headline}
               </h1>
-              <p className="mt-4 max-w-2xl text-pretty text-base sm:text-lg text-white lg:text-xl text-center sm:text-left font-medium">
+              <p className="mt-4 max-w-2xl text-pretty text-base sm:text-lg text-ocean-950 lg:text-xl text-center sm:text-left font-medium">
                 {siteContent.hero.subhead}
               </p>
 
@@ -71,7 +71,7 @@ export function Hero() {
                 {siteContent.hero.chips.map((c, idx) => (
                   <span
                     key={c}
-                    className="glass inline-flex items-center rounded-full px-3 py-2 text-xs font-semibold text-white/80 transition-all duration-300 hover:scale-110 hover:bg-white/15 hover:shadow-md"
+                    className="glass inline-flex items-center rounded-full px-3 py-2 text-xs font-semibold text-ocean-950/80 transition-all duration-300 hover:scale-110 hover:bg-white/15 hover:shadow-md"
                     style={{ animationDelay: `${idx * 0.1}s` }}
                   >
                     {c}
@@ -119,8 +119,7 @@ export function Hero() {
             {/* Tagline below slideshow */}
             <div className="lg:col-span-12 mt-8 sm:mt-10 lg:mt-12">
               <p
-                className="text-center text-lg sm:text-xl lg:text-2xl font-medium text-white/90 italic tracking-wide"
-                style={{ textShadow: '0 2px 8px rgba(0,0,0,0.5)' }}
+                className="text-center text-lg sm:text-xl lg:text-2xl font-medium text-ocean-950 italic tracking-wide"
               >
                 "Where the Sea Meets Expertise – Premium Seafood, Sustainably Sourced, Meticulously Processed, and Exported Worldwide."
               </p>

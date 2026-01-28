@@ -1,6 +1,6 @@
 export const siteContent = {
   brand: {
-    name: 'Deva SEA FOOD',
+    name: 'DEVA SEA FOOD',
     tagline: 'Premium Seafood Exports from India',
     locationLine: 'Cold-chain focused sourcing, processing, and global distribution.',
     address: '3/13, Bye pass road, Madathur, Tuticorin District, Tamil Nadu state, India',
@@ -10,7 +10,8 @@ export const siteContent = {
     { id: 'vision-mission-goals', label: 'Vision' },
     { id: 'what-we-offer', label: 'Offer' },
     { id: 'facility', label: 'Facility' },
-    { id: 'portfolio', label: 'Portfolio' },
+    { id: 'portfolio', label: 'Products' },
+    { id: 'gallery', label: 'Gallery' },
     { id: 'contact', label: 'Get a Quote' },
   ],
   hero: {
@@ -27,7 +28,7 @@ export const siteContent = {
     },
     ctas: {
       primary: { label: 'Request a Quote', href: '#contact' },
-      secondary: { label: 'Explore Portfolio', href: '#portfolio' },
+      secondary: { label: 'Explore Products', href: '#portfolio' },
     },
     chips: [
       '6+ Export Regions Served',
@@ -49,54 +50,62 @@ export const siteContent = {
     { label: 'Lead time focus', value: 'Fast' },
   ],
   portfolio: {
-    title: 'Our Seafood Portfolio',
+    title: 'Our Seafood Products',
     subtitle:
       'We supply a wide range of premium seafood, responsibly sourced, expertly processed, and exported to meet international standards. Our offerings are flexible and tailored to meet diverse client requirements worldwide.',
     products: [
       {
         name: 'Pasteurized Crab meat',
+        slug: 'pasteurized-crab-meat',
         scientific: 'Portunus spp',
         tags: ['Meat'],
         subProducts: ['Colossal', 'Jumbo', 'Super lump', 'Backfin lump', 'Special', 'Claw', 'Cocktail claw'],
       },
       {
         name: 'Grouper',
+        slug: 'grouper',
         scientific: 'Epinephelus spp',
         tags: ['Whole', 'Fillet'],
         subProducts: ['Fillets', 'Fingers'],
       },
       {
         name: 'Mahi Mahi',
+        slug: 'mahi-mahi',
         scientific: 'Coryphaene hippurus',
         tags: ['Whole', 'Meat'],
         subProducts: ['Portions', 'Fingers'],
       },
       {
         name: 'Red Snapper',
+        slug: 'red-snapper',
         scientific: 'Lutjanus spp',
         tags: ['Whole', 'Fillet'],
         subProducts: ['Whole', 'Fillet'],
       },
       {
         name: 'Indian squid',
+        slug: 'indian-squid',
         scientific: 'Uroteuthis duvaucelii',
         tags: ['Whole', 'Rings'],
         subProducts: ['Whole', 'Rings', 'Tubes'],
       },
       {
         name: 'Octopus',
+        slug: 'octopus',
         scientific: 'Octopus cyanea',
         tags: ['Whole', 'Meat'],
         subProducts: ['Whole', 'Tentacles', 'Cuts'],
       },
       {
         name: 'Slipper Lobster',
+        slug: 'slipper-lobster',
         scientific: 'Thenus orientalis',
         tags: ['Whole', 'Meat'],
         subProducts: ['Whole', 'Tail meat'],
       },
       {
         name: 'Vannamei shrimps',
+        slug: 'vannamei-shrimps',
         scientific: 'Litopenaeus vannamei',
         tags: ['Whole', 'Peeled'],
         subProducts: ['Whole', 'Peeled', 'Deveined', 'PDTO', 'PD'],
@@ -284,34 +293,55 @@ export const siteContent = {
     logos: [
       {
         name: 'FSSAI',
-        src: '/certifications/fssai.png',
+        src: '/1.jpeg',
         alt: 'FSSAI Certification',
       },
       {
-        name: 'EU',
-        src: '/certifications/eu.png',
+        name: 'EU Compliance',
+        src: '/2.jpg',
         alt: 'European Union Compliance',
       },
       {
         name: 'Export Inspection Council',
-        src: '/certifications/eic.png',
+        src: '/3.jpeg',
         alt: 'Export Inspection Council Certification',
       },
       {
         name: 'FSSC 22000',
-        src: '/certifications/fssc22000.png',
+        src: '/4.jpeg',
         alt: 'FSSC 22000 Food Safety Certification',
       },
       {
         name: 'GMP',
-        src: '/certifications/gmp.png',
+        src: '/5.jpeg',
         alt: 'Good Manufacturing Practice Certification',
       },
       {
         name: 'HACCP',
-        src: '/certifications/haccp.png',
+        src: '/6.jpeg',
         alt: 'HACCP Certified',
       },
+      {
+        name: 'ISO',
+        src: '/7.jpeg',
+        alt: 'ISO Standards',
+      },
+    ],
+  },
+  gallery: {
+    title: 'Our Gallery',
+    subtitle: 'See our facility, process, and premium seafood in action.',
+    video: {
+      src: '/documentary.mp4',
+      poster: '/Facility photos 1.png',
+    },
+    images: [
+      { src: '/Facility photos 1.png', alt: 'Processing Facility' },
+      { src: '/Facility photos 2.png', alt: 'Quality Control' },
+      { src: '/Facility photo 3.png', alt: 'Cold Storage' },
+      { src: '/Facility photos 4.png', alt: 'Packaging' },
+      { src: '/team thumbs-up.png', alt: 'Our Dedicated Team' },
+      { src: '/hero1.png', alt: 'Fresh Catch' },
     ],
   },
   contact: {

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { ChevronLeft, ChevronRight, Image as ImageIcon, ShieldCheck, Snowflake, Warehouse } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Image as ImageIcon, ShieldCheck, Snowflake, Warehouse, Package, Truck } from 'lucide-react'
 import { siteContent } from '../../content/siteContent'
 import { cn } from '../../lib/cn'
 import { Reveal } from '../motion/Reveal'
@@ -179,19 +179,17 @@ export function Facility() {
                 </span>
                 <div className="min-w-0">
                   <p className="text-sm font-semibold">Facility highlights</p>
-                  <div className="mt-3 grid gap-2">
-                    {siteContent.facility.highlights.map((t, idx) => (
-                      <div key={t} className="flex items-start gap-2 text-sm text-ocean-950/75">
-                        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-ocean-500/80" />
-                        <span className="min-w-0">{t}</span>
-                        {idx === 0 ? (
-                          <ShieldCheck className="ml-auto mt-0.5 h-4 w-4 shrink-0 text-ocean-600/80" />
-                        ) : null}
-                        {idx === 1 ? (
-                          <Snowflake className="ml-auto mt-0.5 h-4 w-4 shrink-0 text-ocean-600/80" />
-                        ) : null}
-                      </div>
-                    ))}
+                  <div className="mt-3 grid gap-3">
+                    {siteContent.facility.highlights.map((t, idx) => {
+                      const icons = [ShieldCheck, Snowflake, Package, Truck]
+                      const Icon = icons[idx] || ShieldCheck
+                      return (
+                        <div key={t} className="flex items-start gap-2.5 text-sm text-ocean-950/75">
+                          <Icon className="mt-0.5 h-4 w-4 shrink-0 text-ocean-600" />
+                          <span className="min-w-0">{t}</span>
+                        </div>
+                      )
+                    })}
                   </div>
                 </div>
               </div>

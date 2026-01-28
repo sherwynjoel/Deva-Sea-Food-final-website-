@@ -5,8 +5,8 @@ import { siteContent } from '../../content/siteContent'
 import { Reveal } from '../motion/Reveal'
 import { Section } from '../ui/Section'
 
-// Images from public folder: 1.jpeg, 3.jpeg, 4.jpeg, 5.jpeg, 6.jpeg, 7.jpeg
-const images = ['/1.jpeg', '/3.jpeg', '/4.jpeg', '/5.jpeg', '/6.jpeg', '/7.jpeg']
+// Images from siteContent
+const images = siteContent.certifications.logos.map(logo => logo.src)
 
 const SCROLL_SPEED = 0.8 // pixels per frame
 
@@ -26,7 +26,7 @@ export function ImageCarousel() {
     const imageWidth = firstImage.offsetWidth
     const gap = 12 // gap-3 = 12px
     const singleSetWidth = images.length * (imageWidth + gap)
-    
+
     const animate = () => {
       scrollPositionRef.current += SCROLL_SPEED
 

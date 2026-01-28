@@ -8,7 +8,12 @@ export function Footer() {
       <Container>
         <div className="flex flex-col items-center gap-8 text-center">
           {/* Company Info */}
-          <div>
+          <div className="flex flex-col items-center">
+            <img
+              src="/logo.png"
+              alt={siteContent.brand.name}
+              className="h-16 w-16 mb-4 object-contain rounded-full"
+            />
             <p className="text-sm font-semibold">{siteContent.brand.name}</p>
             <p className="mt-2 text-sm text-ocean-950/65">{siteContent.brand.locationLine}</p>
             <p className="mt-3 text-xs text-ocean-950/50">{siteContent.brand.address}</p>
