@@ -298,32 +298,32 @@ export const siteContent = {
       },
       {
         name: 'EU Compliance',
-        src: '/2.jpg',
+        src: '/3.jpeg',
         alt: 'European Union Compliance',
       },
       {
         name: 'Export Inspection Council',
-        src: '/3.jpeg',
+        src: '/4.jpeg',
         alt: 'Export Inspection Council Certification',
       },
       {
         name: 'FSSC 22000',
-        src: '/4.jpeg',
+        src: '/5.jpeg',
         alt: 'FSSC 22000 Food Safety Certification',
       },
       {
         name: 'GMP',
-        src: '/5.jpeg',
+        src: '/6.jpeg',
         alt: 'Good Manufacturing Practice Certification',
       },
       {
         name: 'HACCP',
-        src: '/6.jpeg',
+        src: '/7.jpeg',
         alt: 'HACCP Certified',
       },
       {
         name: 'ISO',
-        src: '/7.jpeg',
+        src: '/2.jpg',
         alt: 'ISO Standards',
       },
     ],

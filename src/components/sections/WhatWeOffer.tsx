@@ -96,11 +96,17 @@ export function WhatWeOffer() {
                 <Waves className="h-5 w-5 text-ocean-200" />
               </span>
               <div className="min-w-0">
-                <p className="text-sm font-semibold">Designed for trade-ready seafood</p>
-                <p className="mt-2 text-sm text-ocean-950/75">
-                  Built around export discipline: quality checkpoints, cold-chain handling, and
-                  predictable packing specs for buyers.
-                </p>
+
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {siteContent.hero.chips.map((chip) => (
+                    <span
+                      key={chip}
+                      className="inline-flex items-center rounded-full bg-ocean-100/50 px-2.5 py-1 text-xs font-medium text-ocean-900 ring-1 ring-ocean-900/10"
+                    >
+                      {chip}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           </GlassCard>

@@ -1,26 +1,35 @@
 import { motion, useMotionValue, useAnimationFrame } from 'framer-motion'
 import { ShieldCheck } from 'lucide-react'
-import { useState } from 'react'
-
+import { useState, useEffect } from 'react'
 import { siteContent } from '../../content/siteContent'
 import { Reveal } from '../motion/Reveal'
 import { Section } from '../ui/Section'
 
 export function Certifications() {
-  const [isPaused, setIsPaused] = useState(false);
-  const rotation = useMotionValue(0);
+  const [isPaused, setIsPaused] = useState(false)
+  const rotation = useMotionValue(0)
+  const [radius, setRadius] = useState(340)
+
+  useEffect(() => {
+    const updateRadius = () => {
+      setRadius(window.innerWidth < 640 ? 160 : 340)
+    }
+
+    updateRadius()
+    window.addEventListener('resize', updateRadius)
+    return () => window.removeEventListener('resize', updateRadius)
+  }, [])
 
   // Smooth continuous rotation loop
   useAnimationFrame((_, delta) => {
     if (!isPaused) {
       // Rotate 360 degrees every 20 seconds (0.018 degrees per ms)
-      // Adjust speed based on number of items to keep consistent spacing feeling
-      const move = delta * 0.018;
-      rotation.set(rotation.get() + move);
+      const move = delta * 0.018
+      rotation.set(rotation.get() + move)
     }
-  });
+  })
 
-  const logos = siteContent.certifications.logos;
+  const logos = siteContent.certifications.logos
 
   return (
     <Section id="certifications" className="overflow-hidden">
@@ -60,13 +69,13 @@ export function Certifications() {
           >
 
             {logos.map((cert, index) => {
-              const angle = index * (360 / logos.length);
+              const angle = index * (360 / logos.length)
               return (
                 <div
                   key={cert.name}
                   className="absolute left-1/2 top-1/2 -ml-16 -mt-20"
                   style={{
-                    transform: `rotateY(${angle}deg) translateZ(340px)`,
+                    transform: `rotateY(${angle}deg) translateZ(${radius}px)`,
                     transformStyle: 'preserve-3d',
                   }}
                 >
@@ -79,12 +88,11 @@ export function Certifications() {
                     </span>
                   </div>
                 </div>
-              );
+              )
             })}
           </motion.div>
         </div>
       </div>
     </Section>
-  );
+  )
 }
-

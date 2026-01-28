@@ -67,17 +67,7 @@ export function Hero() {
                 </a>
               </div>
 
-              <div className="mt-6 flex flex-wrap justify-center sm:justify-start gap-1.5 sm:gap-2">
-                {siteContent.hero.chips.map((c, idx) => (
-                  <span
-                    key={c}
-                    className="glass inline-flex items-center rounded-full px-3 py-2 text-xs font-semibold text-ocean-950/80 transition-all duration-300 hover:scale-110 hover:bg-white/15 hover:shadow-md"
-                    style={{ animationDelay: `${idx * 0.1}s` }}
-                  >
-                    {c}
-                  </span>
-                ))}
-              </div>
+
             </div>
 
             <div className="lg:col-span-5">
